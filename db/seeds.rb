@@ -17,7 +17,7 @@ Owner.create!(name:"foamwash")
 Owner.create!(name:"Gary")
 Owner.create!(name:"Gary Patel")
 Owner.create!(name:"ISSA & REYAD")
-Owner.create!(name:"JEFF RAFIQ & SAM")
+jeff = Owner.create!(name:"JEFF RAFIQ & SAM")
 Owner.create!(name:"KP")
 Owner.create!(name:"MIKE GENSINGER")
 Owner.create!(name:"MISC OWNERS")
@@ -29,3 +29,28 @@ Owner.create!(name:"Sobhi&Anass Clinton ct")
 Owner.create!(name:"SUNNY CHAUDHRY")
 Owner.create!(name:"Sunny Patel")
 Owner.create!(name:"TEDDY ZORBIS")
+
+jeff.businesses.new(name:)
+Beacon Main st deli
+Beacon_Coastal 145 Fishkill
+Beacon_Durkin's Deli
+Beacon_Gas Line_(Citgo) 220 main st
+Beacon_Gulf
+"Bob's Cornerstore"
+"Brewster"
+"Cheshire mini mart bp"
+"Citgo rhinebeck"
+"Crazy Chicken Deli_Poughkeepsie"
+"Hughsonville Deli"
+"Kingston_Citgo"
+"Lotto store"
+"Market st.-Poughkeepsie_Sunoco"
+"Middlefield groceries"
+"Milford"
+"Monticello Exxon"
+"O'Dells_Citgo"
+"Parker Ave._Exxon"
+"Sams Food Mart_Poughkeepsie"
+"Stanfordville_Sunoco"
+"Stormville Citgo"
+"Westbrookville Deli"
