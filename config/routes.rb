@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  root 'owner#index'
+  root 'owners#index'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
 end
