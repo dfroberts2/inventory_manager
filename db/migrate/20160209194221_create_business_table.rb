@@ -1,6 +1,6 @@
 class CreateBusinessTable < ActiveRecord::Migration
   def change
-    create_table :business do |t|
+    create_table :businesses do |t|
     	t.string :name, null:false
     	t.string :address
     	t.string :city
