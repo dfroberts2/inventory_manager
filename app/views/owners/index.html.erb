@@ -1,6 +1,8 @@
-HI
-<ul>
-<% @owners.each do |owner|%>
-	<li><%=owner.name%></li>
-	<%end%>
-</ul>
+<div class="select-container">
+	<h1>Select Owner:</h1>
+	<select class="owner-select">
+	<% @owners.each do |owner|%>
+		<option value="<%=owner.id%>"><%=owner.name%><option/>
+		<%end%>
+	</select>
+</div>
