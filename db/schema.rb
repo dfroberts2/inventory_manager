@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160209221213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "business", force: :cascade do |t|
+  create_table "businesses", force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "address"
     t.string   "city"
@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(version: 20160209221213) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "inventory", force: :cascade do |t|
+  create_table "inventories", force: :cascade do |t|
     t.datetime "date",        null: false
     t.integer  "business_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "owner", force: :cascade do |t|
+  create_table "owners", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
