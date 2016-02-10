@@ -1,0 +1,5 @@
+<ul>
+	<% @businesses.each do |business| %>
+		<li><%= link_to business.name, owner_business_path(business.owner, business)%></li>
+	<% end %>
+</ul>

@@ -57,4 +57,7 @@ Rails.application.routes.draw do
   root 'owners#index'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
+  resources :owners, only: [:index] do
+    resources :businesses, only: [:index, :show]
+  end
 end

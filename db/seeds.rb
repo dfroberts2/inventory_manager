@@ -30,27 +30,26 @@ Owner.create!(name:"SUNNY CHAUDHRY")
 Owner.create!(name:"Sunny Patel")
 Owner.create!(name:"TEDDY ZORBIS")
 
-jeff.businesses.new(name:)
-Beacon Main st deli
-Beacon_Coastal 145 Fishkill
-Beacon_Durkin's Deli
-Beacon_Gas Line_(Citgo) 220 main st
-Beacon_Gulf
-"Bob's Cornerstore"
-"Brewster"
-"Cheshire mini mart bp"
-"Citgo rhinebeck"
-"Crazy Chicken Deli_Poughkeepsie"
-"Hughsonville Deli"
-"Kingston_Citgo"
-"Lotto store"
-"Market st.-Poughkeepsie_Sunoco"
-"Middlefield groceries"
-"Milford"
-"Monticello Exxon"
-"O'Dells_Citgo"
-"Parker Ave._Exxon"
-"Sams Food Mart_Poughkeepsie"
-"Stanfordville_Sunoco"
-"Stormville Citgo"
-"Westbrookville Deli"
+jeff.businesses.create!(name:"Beacon Main st deli")
+jeff.businesses.create!(name:"Beacon_Coastal 145 Fishkill")
+jeff.businesses.create!(name:"Beacon_Durkins Deli")
+jeff.businesses.create!(name:"Beacon_Gas Line_(Citgo) 220 main st")
+jeff.businesses.create!(name:"Beacon_Gulf")
+jeff.businesses.create!(name:"Bobs Cornerstore")
+jeff.businesses.create!(name:"Brewster")
+jeff.businesses.create!(name:"Cheshire mini mart bp")
+jeff.businesses.create!(name:"Citgo rhinebeck")
+jeff.businesses.create!(name:"Crazy Chicken Deli_Poughkeepsie")
+jeff.businesses.create!(name:"Hughsonville Deli")
+jeff.businesses.create!(name:"Kingston_Citgo")
+jeff.businesses.create!(name:"Lotto store")
+jeff.businesses.create!(name:"Market st.-Poughkeepsie_Sunoco")
+jeff.businesses.create!(name:"Middlefield groceries")
+jeff.businesses.create!(name:"Milford")
+jeff.businesses.create!(name:"Monticello Exxon")
+jeff.businesses.create!(name:"ODells_Citgo")
+jeff.businesses.create!(name:"Parker Ave._Exxon")
+jeff.businesses.create!(name:"Sams Food Mart_Poughkeepsie")
+jeff.businesses.create!(name:"Stanfordville_Sunoco")
+jeff.businesses.create!(name:"Stormville Citgo")
+jeff.businesses.create!(name:"Westbrookville Deli")
