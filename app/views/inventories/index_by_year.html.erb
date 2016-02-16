@@ -1,5 +1,5 @@
 <ul>
 	<% @inventories.each do |inventory| %>
-		<li><%=inventory.format_date%></li>
+		<li><%= link_to inventory.format_date, inventory_path(inventory)%></li>
 	<% end %>
 </ul>

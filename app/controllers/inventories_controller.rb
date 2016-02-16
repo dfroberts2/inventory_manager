@@ -5,4 +5,8 @@ class InventoriesController < ApplicationController
 		@inventories = business.inventories_by_year(year)
 		render layout: false if request.xhr?
 	end
+
+	def show
+		@inventory = Inventory.find(params[:id])
+	end
 end

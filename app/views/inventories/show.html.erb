@@ -1,0 +1,29 @@
+<div class="inventory-container">
+	<h1><%= @inventory.business.name %></h1>
+	<h2><%= @inventory.date.to_date%> Inventory</h2>
+	<div class="category row">
+		<h3 class="report-header">Report by Category</h3>
+		<div class="scanner col-md-6">
+			<ol>
+				<% @inventory.category_scanners.each do |scanner| %>
+				<li>Edit Scanner | Import Data
+
+				</li>
+				<% end %>
+			</ol>
+				<%= link_to "Add Scanner", inventory_category_scanners_path(@inventory), method: :post %>
+		</div>
+		<div class="reports col-md-6">
+			<h3>hey</h3>
+		</div>
+	</div>
+
+	<div class="category row">
+		<h3 class="report-header">Report by UPC Code</h3>
+		<div class="scanner col-md-6">
+			
+		</div>
+		<div class="reports col-md-6">
+		</div>
+	</div>
+</div>
