@@ -9,4 +9,15 @@ $(document).ready(function(){
 			console.log("fail" + response)
 		})
 	});
+
+	$(".year-select").change(function(event){
+		var year = $(".year-select option:selected").val()
+		var url = document.URL + "/inventories/" + year
+		$.get(url, function(response){
+		}).then(function(response){
+			$(".inventory-links").html(response)
+		}).fail(function(response){
+			console.log("fail" + response)
+		})
+	});
 });

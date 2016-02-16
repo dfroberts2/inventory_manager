@@ -5,4 +5,8 @@ class Business < ActiveRecord::Base
 	def inventory_years
 		inventories.map {|inventory| inventory.date.year}.uniq
 	end
+
+	def inventories_by_year(year)
+		inventories.select {|inventory| inventory.date.year == year.to_i}
+	end
 end

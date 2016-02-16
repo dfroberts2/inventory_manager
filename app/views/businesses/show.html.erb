@@ -1,9 +1,12 @@
 <div class="select-container">
 <h1><%= @business.name %></h1>
 <h2>Filter year:</h2>
-<select class="owner-select">
+<select class="year-select">
+		<option>Select year</option>
 		<% @business.inventory_years.each do |year| %>
 			<option value="<%=year%>"><%=year%></option>
 			<%end%>
 </select>
+<div class="inventory-links">
+	</div>
 </div>

@@ -60,4 +60,5 @@ Rails.application.routes.draw do
   resources :owners, only: [:index] do
     resources :businesses, only: [:index, :show]
   end
+  get 'owners/:id/businesses/:id/inventories/:year' => 'inventories#index_by_year'
 end
