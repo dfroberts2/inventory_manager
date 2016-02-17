@@ -3,18 +3,28 @@
 	<h2><%= @inventory.date.to_date%> Inventory</h2>
 	<div class="category row">
 		<h3 class="report-header">Report by Category</h3>
-		<div class="scanner col-md-6">
+		<div class="scanner col-md-8">
+			<h3>Scanner</h3>
 			<ol>
 				<% @inventory.category_scanners.each do |scanner| %>
-				<li>Edit Scanner | Import Data
-
-				</li>
+				<div class="row">
+					<div class="col-md-4">
+						<li><%= link_to "Edit Scanner", edit_category_scanner_path%></li>
+					</div>
+					<div class="col-md-8">
+						<%= form_tag import_category_scanners_path, multipart: true do %>
+						<%= file_field_tag :file%>
+						<%= hidden_field_tag :scanner_id, scanner.id %>
+						<%= submit_tag "Add Scanner Data", class: "btn btn-default" %>
+						<% end %>
+					</div>
+				</div>
 				<% end %>
 			</ol>
 				<%= link_to "Add Scanner", inventory_category_scanners_path(@inventory), method: :post %>
 		</div>
-		<div class="reports col-md-6">
-			<h3>hey</h3>
+		<div class="reports col-md-4">
+			<h3>Generate Reports</h3>
 		</div>
 	</div>
 

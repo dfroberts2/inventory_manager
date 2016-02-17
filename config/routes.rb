@@ -61,7 +61,10 @@ Rails.application.routes.draw do
     resources :businesses, only: [:index, :show]
   end
   resources :inventories, only: [:show, :new, :create] do
-    resources :category_scanners, only: [:create, :edit]
+    resources :category_scanners, only: [:create]
+  end
+  resources :category_scanners, only: [:edit] do
+    collection {post :import}
   end
   get 'owners/:id/businesses/:id/inventories/:year' => 'inventories#index_by_year'
 end
