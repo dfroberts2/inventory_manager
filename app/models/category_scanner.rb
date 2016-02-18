@@ -10,9 +10,7 @@ class CategoryScanner < ActiveRecord::Base
 		end
 	end
 
-	def self.check_csv(file)
-		if File.extname(file.original_filename) != ".csv"
-			raise "Unknown file type: #{file.original_filename}"
-	  end
+	def self.csv_or_txt(file)
+		File.extname(file.original_filename) == ".csv" || File.extname(file.original_filename) == ".txt"
 	end
 end

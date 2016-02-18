@@ -56,16 +56,23 @@ Rails.application.routes.draw do
 
   root 'owners#index'
   get 'login' => 'sessions#new'
+
   post 'login' => 'sessions#create'
   resources :owners, only: [:index] do
     resources :businesses, only: [:index, :show]
   end
+
   resources :inventories, only: [:show, :new, :create] do
     resources :category_scanners, only: [:create]
   end
+
+  get 'inventories/:id/edit_margins' => 'inventories#edit_margins', as: :edit_margins
+  put 'inventories/:id' => 'inventories#update_margins', as: :update_margins
+
   resources :category_scanners, only: [:edit, :update, :destroy] do
     collection {post :import}
     post 'category_items' => 'category_items#create'
   end
+
   get 'owners/:id/businesses/:id/inventories/:year' => 'inventories#index_by_year'
 end

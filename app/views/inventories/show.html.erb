@@ -24,7 +24,10 @@
 				</div>
 				<% end %>
 			</ol>
-				<%= link_to "Add Scanner", inventory_category_scanners_path(@inventory), method: :post %>
+			<div class="row">
+				<%= link_to "Add Scanner", inventory_category_scanners_path(@inventory), method: :post, class: "col-md-6"%>
+				<%= link_to "Edit Category Margins", edit_margins_path(@inventory), class: "col-md-6" %>
+			</div>
 		</div>
 		<div class="reports col-md-4">
 			<h3>Generate Reports</h3>

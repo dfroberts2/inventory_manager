@@ -7,9 +7,12 @@ class  CategoryScannersController < ApplicationController
 
 	def import
 		scanner = CategoryScanner.find(params[:scanner_id])
-		CategoryScanner.check_csv(params[:file])
-		CategoryScanner.clear_and_import(params[:file], scanner)
-		redirect_to inventory_path(scanner.inventory)
+		if !CategoryScanner.csv_or_txt(params[:file])
+			redirect_to inventory_path(scanner.inventory), notice: "Please upload a .txt or .csv file"
+		else
+			CategoryScanner.clear_and_import(params[:file], scanner)
+			redirect_to inventory_path(scanner.inventory)
+		end
 	end
 
 	def edit
