@@ -1,6 +1,5 @@
 class  CategoryItemsController < ApplicationController
 	def create
-		binding.pry
 		scanner = CategoryScanner.find(params[:category_scanner_id])
 		item = scanner.category_items.new(item_params)
 		if item.save

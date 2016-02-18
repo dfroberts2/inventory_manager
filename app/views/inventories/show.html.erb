@@ -11,7 +11,10 @@
 					<div class="col-md-4">
 						<li><%= link_to "Edit Scanner", edit_category_scanner_path(scanner)%></li>
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-2">
+						<p><%= link_to "Delete", category_scanner_path(scanner), method: :delete %></p>
+					</div>
+					<div class="col-md-6">
 						<%= form_tag import_category_scanners_path, multipart: true do %>
 						<%= file_field_tag :file%>
 						<%= hidden_field_tag :scanner_id, scanner.id %>

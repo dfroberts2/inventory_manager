@@ -34,4 +34,10 @@ class  CategoryScannersController < ApplicationController
 		# end
 		redirect_to edit_category_scanner_path(scanner)
 	end
+
+	def destroy
+		scanner = CategoryScanner.find(params[:id])
+		scanner.destroy
+		redirect_to inventory_path(scanner.inventory)
+	end
 end

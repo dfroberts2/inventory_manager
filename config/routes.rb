@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   resources :inventories, only: [:show, :new, :create] do
     resources :category_scanners, only: [:create]
   end
-  resources :category_scanners, only: [:edit, :update] do
+  resources :category_scanners, only: [:edit, :update, :destroy] do
     collection {post :import}
     post 'category_items' => 'category_items#create'
   end
