@@ -1,0 +1,35 @@
+<div class="edit-scanner">
+	<h2>Update Scanner Items:</h2>
+	<%= render partial: "form_labels" %>
+	<%= form_for @scanner do |f| %>
+		<%= f.fields_for :category_items do |i_f| %>
+			<div class="row form-group">
+				<div class="col-md-2">
+					<%= i_f.text_field :category, class: "form-control"%>
+				</div>
+				<div class="col-md-2">
+					<%= i_f.text_field :quantity, class: "form-control"%>
+				</div>
+				<div class="col-md-2">
+					<%= i_f.text_field :retail_price, class: "form-control"%>
+				</div>
+				<div class="col-md-2">
+					<%= i_f.text_field :cost, class: "form-control"%>
+				</div>
+				<div class="col-md-2">
+					<%= i_f.text_field :margin, class: "form-control"%>
+				</div>
+				<div class="col-md-2">
+					<%= i_f.check_box :_destroy%>
+					<%= f.label :_destroy, "Delete Item?" %>
+				</div>
+			</div>
+		<% end %>
+		<div class="row">
+		<%= f.submit "Update Scanner", class: "col-md-10 btn btn-default"%>
+		</div>
+	<% end %>
+	<h2>Add Scanner Item:</h2>
+	<%= render partial: "form_labels" %>
+	<%= render partial: "new_item" %>
+</div>

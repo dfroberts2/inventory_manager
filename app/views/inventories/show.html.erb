@@ -9,7 +9,7 @@
 				<% @inventory.category_scanners.each do |scanner| %>
 				<div class="row">
 					<div class="col-md-4">
-						<li><%= link_to "Edit Scanner", edit_category_scanner_path%></li>
+						<li><%= link_to "Edit Scanner", edit_category_scanner_path(scanner)%></li>
 					</div>
 					<div class="col-md-8">
 						<%= form_tag import_category_scanners_path, multipart: true do %>

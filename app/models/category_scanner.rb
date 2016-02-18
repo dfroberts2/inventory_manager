@@ -1,6 +1,7 @@
 class CategoryScanner < ActiveRecord::Base
 	belongs_to :inventory
 	has_many :category_items
+	accepts_nested_attributes_for :category_items, allow_destroy: true
 
 	def self.clear_and_import(file, scanner)
 		scanner.category_items.each {|item| item.destroy}
