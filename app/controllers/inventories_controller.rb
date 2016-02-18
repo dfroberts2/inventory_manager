@@ -15,5 +15,12 @@ class InventoriesController < ApplicationController
 	end
 
 	def update_margins
+		inventory = Inventory.find(params[:id])
+		params[:inventory][:categories].each do |category, margin|
+			inventory.all_items_in_category(category).each do |item|
+				item.update_attributes(margin: margin)
+			end
+		end
+		redirect_to inventory_path(inventory), notice: "Updated Margin Values"
 	end
 end

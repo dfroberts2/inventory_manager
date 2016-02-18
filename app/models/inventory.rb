@@ -6,11 +6,15 @@ class Inventory < ActiveRecord::Base
 		date.strftime("%m-%d-%Y")
 	end
 
-	def all_category_items
+	def all_items
 		category_scanners.map{|scanner| scanner.category_items}.inject(:+)
 	end
 
 	def all_categories
-		all_category_items.map{|item| item.category}.uniq
+		all_items.map{|item| item.category}.uniq
+	end
+
+	def all_items_in_category(category)
+		all_items.select{|item| item.category == category}
 	end
 end
