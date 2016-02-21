@@ -17,4 +17,24 @@ class Inventory < ActiveRecord::Base
 	def all_items_in_category(category)
 		all_items.select{|item| item.category == category}
 	end
+
+	def category_margin(category)
+		all_items_in_category(category).first.margin
+	end
+
+	def sum_category_retail_prices(category)
+		all_items_in_category(category).map{ |item| item.retail_price}.inject(:+)
+	end
+
+	def category_allocation(category)
+		sum_category_retail_prices(category).to_f/total_retail_value.to_f
+	end
+
+	def total_retail_value
+		all_items.map {|item| item.retail_price}.inject(:+)
+	end
+
+	def sum_category_cost_prices(category)
+		sum_category_retail_prices(category).to_f * (1 - category_margin(category).to_f)
+	end
 end
