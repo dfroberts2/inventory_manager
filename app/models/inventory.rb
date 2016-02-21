@@ -27,7 +27,7 @@ class Inventory < ActiveRecord::Base
 	end
 
 	def category_allocation(category)
-		sum_category_retail_prices(category).to_f/total_retail_value.to_f
+		sum_category_retail_prices(category)/total_retail_value
 	end
 
 	def total_retail_value
@@ -35,6 +35,6 @@ class Inventory < ActiveRecord::Base
 	end
 
 	def sum_category_cost_prices(category)
-		sum_category_retail_prices(category).to_f * (1 - category_margin(category).to_f)
+		sum_category_retail_prices(category) * (1 - category_margin(category))
 	end
 end
