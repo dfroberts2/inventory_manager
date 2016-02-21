@@ -16,7 +16,7 @@
 						<%= label_tag category %>
 					</div>
 					<div class="col-md-4">
-						<%= c_f.text_field category, class: 'form-control' %>
+						<%= c_f.text_field category, class: 'form-control', placeholder: "currently: "+ @inventory.category_margin(category).to_s %>
 					</div>
 				</div>
 			<% end %>	

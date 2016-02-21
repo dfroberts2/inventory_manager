@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20160216194318) do
   create_table "category_items", force: :cascade do |t|
     t.integer  "category_scanner_id", null: false
     t.string   "category",            null: false
-    t.integer  "quantity",            null: false
-    t.integer  "retail_price",        null: false
-    t.integer  "cost"
-    t.decimal  "margin"
+    t.float    "quantity",            null: false
+    t.float    "retail_price",        null: false
+    t.float    "cost"
+    t.float    "margin"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end

@@ -1,0 +1,20 @@
+<div class="table-container">
+	<table class="table">
+		<tr class="row">
+			<th class="col-md-4">Category</th>
+			<th class="col-md-2">Cost</th>
+			<th class="col-md-2">Retail</th>
+			<th class="col-md-2">Mgn</th>
+			<th class="col-md-2">Allocation</th>
+		</tr>
+		<% @inventory.all_categories.each do |category| %>
+			<tr class="row">
+				<td class="col-md-4"><%= CategoryItem.category_full_name(category) %></td>
+				<td class="col-md-2"><%= @inventory.sum_category_cost_prices(category) %></td>
+				<td class="col-md-2"><%= @inventory.sum_category_retail_prices(category) %></td>
+				<td class="col-md-2"><%= @inventory.category_margin(category).to_s %></td>
+				<td class="col-md-2"><%= @inventory.category_allocation(category) %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
