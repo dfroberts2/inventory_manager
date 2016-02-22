@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require loader.js
 //= require_tree .

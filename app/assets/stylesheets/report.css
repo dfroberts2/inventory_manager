@@ -1,0 +1,13 @@
+.table-container {
+	width: 65%;
+	margin: auto;
+}
+
+.total-line {
+	font-weight: bold;
+}
+
+#chart-container {
+	width: 95%;
+	margin: auto;
+}

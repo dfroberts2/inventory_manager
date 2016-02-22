@@ -64,6 +64,7 @@ Rails.application.routes.draw do
 
   resources :inventories, only: [:show, :new, :create] do
     resources :category_scanners, only: [:create]
+    resources :categories, only: [:edit, :update]
   end
 
   get 'inventories/:id/edit_margins' => 'inventories#edit_margins', as: :edit_margins
