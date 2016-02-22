@@ -27,7 +27,8 @@ class  CategoryScannersController < ApplicationController
 			if attributes[:_destroy] == "1"
 				update_item.destroy
 			else
-				update_item.update_attributes(category: attributes[:category], quantity: attributes[:quantity], retail_price: attributes[:retail_price], cost: attributes[:cost], margin: attributes[:margin])
+				update_item.category = Category.find_or_create_by(inventory: scanner.inventory, category_name: attributes[:category_name])
+				update_item.update_attributes(quantity: attributes[:quantity], retail_price: attributes[:retail_price])
 			end
 		end
 		# if scanner.update_attributes(params[:category_scanner], permit[:user_attribute])
@@ -35,6 +36,7 @@ class  CategoryScannersController < ApplicationController
 		# else
 		# 	redirect_to inventory_path(scanner.inventory), notice: "Couldn't Update"
 		# end
+		scanner.inventory.clear_empty_categories
 		redirect_to edit_category_scanner_path(scanner)
 	end
 

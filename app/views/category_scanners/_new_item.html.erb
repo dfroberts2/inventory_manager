@@ -1,22 +1,15 @@
 	<%= form_for [@scanner, @item] do |f| %>
-		
-			<div class="row form-group">
-				<div class="col-md-2">
-					<%= f.text_field :category, class: "form-control"%>
-				</div>
-				<div class="col-md-2">
-					<%= f.text_field :quantity, class: "form-control"%>
-				</div>
-				<div class="col-md-2">
-					<%= f.text_field :retail_price, class: "form-control"%>
-				</div>
-				<div class="col-md-2">
-					<%= f.text_field :cost, class: "form-control"%>
-				</div>
-				<div class="col-md-2">
-					<%= f.text_field :margin, class: "form-control"%>
-				</div>
+		<div class="row form-group">
+			<div class="col-md-3">
+				<%= f.text_field :category, class: "form-control"%>
 			</div>
+			<div class="col-md-3">
+				<%= f.text_field :quantity, class: "form-control"%>
+			</div>
+			<div class="col-md-3">
+				<%= f.text_field :retail_price, class: "form-control"%>
+			</div>
+		</div>
 		<div class="row">
 			<%= f.submit "Add Item", class: "col-md-10 btn btn-default"%>
 		</div>

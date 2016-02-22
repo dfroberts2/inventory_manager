@@ -4,22 +4,16 @@
 	<%= form_for @scanner do |f| %>
 		<%= f.fields_for :category_items do |i_f| %>
 			<div class="row form-group">
-				<div class="col-md-2">
-					<%= i_f.text_field :category, class: "form-control"%>
+				<div class="col-md-3">
+					<%= i_f.text_field :category_name, class: "form-control"%>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<%= i_f.text_field :quantity, class: "form-control"%>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<%= i_f.text_field :retail_price, class: "form-control"%>
 				</div>
-				<div class="col-md-2">
-					<%= i_f.text_field :cost, class: "form-control"%>
-				</div>
-				<div class="col-md-2">
-					<%= i_f.text_field :margin, class: "form-control"%>
-				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<%= i_f.check_box :_destroy%>
 					<%= f.label :_destroy, "Delete Item?" %>
 				</div>

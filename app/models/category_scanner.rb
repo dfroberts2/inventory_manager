@@ -6,7 +6,8 @@ class CategoryScanner < ActiveRecord::Base
 	def self.clear_and_import(file, scanner)
 		scanner.category_items.each {|item| item.destroy}
 		CSV.foreach(file.path) do |row|
-			scanner.category_items.create(category: row[0], quantity: row[1], retail_price: row[2])
+			category = Category.find_or_create_by(category_name: row[0], inventory: scanner.inventory)
+			scanner.category_items.create(category: category, quantity: row[1], retail_price: row[2])
 		end
 	end
 

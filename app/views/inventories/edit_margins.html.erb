@@ -9,18 +9,17 @@
 		</div>
 	</div>
 	<%= form_for @inventory, url: :update_margins, method: :put do |f| %>
-		<% @inventory.all_categories.each do |category| %>
 			<%= f.fields_for :categories do |c_f| %>
 				<div class="row form-group">
 					<div class="col-md-6">
-						<%= label_tag category %>
+						<%= label_tag c_f.object.category_name %>
 					</div>
-					<div class="col-md-4">
-						<%= c_f.text_field category, class: 'form-control', placeholder: "currently: "+ @inventory.category_margin(category).to_s %>
+					<div class="col-md-6">
+						<%= c_f.text_field :margin_value, class: 'form-control' %>
 					</div>
 				</div>
 			<% end %>	
-		<% end %>
+
 		<div class="row">
 			<%= f.submit "submit", class: "col-md-10 btn btn-default" %>
 		</div>
