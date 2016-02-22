@@ -8,10 +8,10 @@
 			<th class="col-md-2">Allocation</th>
 		</tr>
 		<% @inventory.categories.each do |category| %>
-			<tr class="row">
-				<td class="col-md-4"><%= Category.full_name(category) %></td>
-				<td class="col-md-2"><%= category.sum_cost_prices %></td>
-				<td class="col-md-2"><%= category.sum_retail_prices%></td>
+			<tr class="row category-row">
+				<td class="col-md-4 category-name"><%= Category.full_name(category) %></td>
+				<td class="col-md-2 cost-sum"><%= category.sum_cost_prices %></td>
+				<td class="col-md-2 retail-sum"><%= category.sum_retail_prices%></td>
 				<td class="col-md-2"><%= category.margin_value %></td>
 				<td class="col-md-2"><%= number_to_percentage(category.allocation_percent, precision: 1) %></td>
 			</tr>
@@ -22,4 +22,6 @@
 			<td class="col-md-2"><%= @inventory.total_retail_value %></td>
 		</tr>
 	</table>
+</div>
+<div id="chart-container">
 </div>
