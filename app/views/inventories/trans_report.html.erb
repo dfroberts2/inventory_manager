@@ -10,16 +10,16 @@
 		<% @inventory.categories_alphabetically.each do |category| %>
 			<tr class="row category-row">
 				<td class="col-md-4 category-name"><%= Category.full_name(category) %></td>
-				<td class="col-md-2">$<span class="cost-sum"><%= convert_to_dollar(category.sum_cost_prices) %></span></td>
-				<td class="col-md-2">$<span class="retail-sum"><%= convert_to_dollar(category.sum_retail_prices)%></span></td>
+				<td class="col-md-2">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_cost_prices) %></span></td>
+				<td class="col-md-2">$<span class="retail-sum"><%= number_with_delimiter convert_to_dollar(category.sum_retail_prices)%></span></td>
 				<td class="col-md-2"><%=  number_to_percentage(category.margin_percent, precision: 0) %></td>
 				<td class="col-md-2"><%= number_to_percentage(category.allocation_percent, precision: 1) %></td>
 			</tr>
 		<% end %>
 		<tr class="row total-line">
 			<td class="col-md-4">Total:</td>
-			<td class="col-md-2">$<%= convert_to_dollar(@inventory.total_cost_value) %></td>
-			<td class="col-md-2">$<%= convert_to_dollar(@inventory.total_retail_value) %></td>
+			<td class="col-md-2">$<%= number_with_delimiter convert_to_dollar(@inventory.total_cost_value) %></td>
+			<td class="col-md-2">$<%= number_with_delimiter convert_to_dollar(@inventory.total_retail_value) %></td>
 			<td class="col-md-2"></td>
 			<td class="col-md-2"></td>
 		</tr>

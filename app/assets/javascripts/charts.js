@@ -1,9 +1,9 @@
 $(document).ready(function(){
 	if ($('#trans-chart-container').length) {
 		google.charts.load('current', {packages: ['corechart']});
-		google.charts.setOnLoadCallback(drawChart);
+		google.charts.setOnLoadCallback(drawBarChart);
 
-		function drawChart() {
+		function drawBarChart() {
 			var dataArray = [["Category", "Retail Value", { role: "style" } ]]
 			$('.category-row').each(function() {
 				dataArray.push([$(this).find('.category-name').html(),parseFloat($(this).find('.retail-sum').html()),"gold"])
@@ -32,13 +32,11 @@ $(document).ready(function(){
 
 			chart.draw(view, options)
 		};
-	};
-
-	if ($('#dept-chart-container').length) {
+	} else if ($('.monthly-values').length > 1) {
 		google.charts.load('current', {packages: ['corechart', 'line']});
-		google.charts.setOnLoadCallback(drawChart);
+		google.charts.setOnLoadCallback(drawLineChart);
 
-		function drawChart() {
+		function drawLineChart() {
 			var dataArray = [["Date", "Retail Value"]]
 			$('.monthly-values').each(function() {
 				dataArray.push([new Date(Date.parse($(this).find('.inventory-date').html())), parseFloat($(this).find('.inventory-value').html())])
@@ -46,7 +44,7 @@ $(document).ready(function(){
 			var data = new google.visualization.arrayToDataTable(dataArray);
 			var options = {
 				hAxis: {title: 'Date', format: 'MM/dd/yy'},
-				vAxis: {title: 'Total Inventory Retail Value', format: '$'},
+				vAxis: {title: 'Total Inventory Retail Value', format: '$###,###', minValue: 0},
 				legend: { position: "none" },
 				pointSize: 10,
 	          	series: { 0: { pointShape: 'square' } }

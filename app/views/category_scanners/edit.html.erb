@@ -1,5 +1,8 @@
 <div class="edit-scanner">
-	<h2>Update Scanner Items:</h2>
+	<div class="row">
+	<h2 class="col-md-6">Update Scanner Items:</h2>
+	<h2 class="col-md-6"><%= link_to "Back", inventory_path(@scanner.inventory) %></h1>
+	</div>
 	<%= render partial: "form_labels" %>
 	<%= form_for @scanner do |f| %>
 		<%= f.fields_for :category_items do |i_f| %>

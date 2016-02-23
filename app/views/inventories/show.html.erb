@@ -1,5 +1,8 @@
 <div class="inventory-container">
-	<h1><%= @inventory.business.name %></h1>
+	<div class="row">
+		<h1 class="col-md-6"><%= @inventory.business.name %></h1>
+		<h1 class="col-md-6"><%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business) %></h1>
+	</div>
 	<h2><%= @inventory.date.to_date%> Inventory</h2>
 	<div class="category row">
 		<h3 class="report-header">Report by Category</h3>

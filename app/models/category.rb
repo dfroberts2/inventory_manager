@@ -31,7 +31,7 @@ class Category < ActiveRecord::Base
 	end
 
 	def sum_retail_prices
-		category_items.map{ |item| item.retail_price}.inject(:+)
+		category_items.map{ |item| item.retail_price*item.quantity}.inject(:+)
 	end
 
 	def sum_cost_prices

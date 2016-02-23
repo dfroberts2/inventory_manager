@@ -12,7 +12,7 @@
 			<%= f.fields_for :categories do |c_f| %>
 				<div class="row form-group">
 					<div class="col-md-6">
-						<%= label_tag c_f.object.category_name %>
+						<%= label_tag Category.full_name(c_f.object) %>
 					</div>
 					<div class="col-md-6">
 						<%= c_f.text_field :margin_value, class: 'form-control' %>
