@@ -22,4 +22,12 @@ class Inventory < ActiveRecord::Base
 			category.destroy if category.category_items.empty?
 		end
 	end
+
+	def categories_alphabetically
+		categories.sort_by{ |category| category.category_name}
+	end
+
+	def current_and_previous_categories
+		categories_alphabetically.zip(business.previous_inventory(self).categories_alphabetically)
+	end
 end

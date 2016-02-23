@@ -41,4 +41,8 @@ class Category < ActiveRecord::Base
 	def allocation_percent
 		100 * sum_retail_prices / inventory.total_retail_value
 	end
+
+	def margin_percent
+		margin_value * 100
+	end
 end

@@ -70,6 +70,7 @@ Rails.application.routes.draw do
   get 'inventories/:id/edit_margins' => 'inventories#edit_margins', as: :edit_margins
   put 'inventories/:id' => 'inventories#update_margins', as: :update_margins
   get 'inventories/:id/trans_report' => 'inventories#trans_report', as: :trans_report
+  get 'inventories/:id/dept_report' => 'inventories#dept_report', as: :dept_report
 
   resources :category_scanners, only: [:edit, :update, :destroy] do
     collection {post :import}
