@@ -45,4 +45,9 @@ class Category < ActiveRecord::Base
 	def margin_percent
 		margin_value * 100
 	end
+
+	def previous_inventory_same_category
+		last_inventory = inventory.business.previous_inventory(inventory)
+		Category.find_by(category_name: category_name, inventory: last_inventory)
+	end
 end

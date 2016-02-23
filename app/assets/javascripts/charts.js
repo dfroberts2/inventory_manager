@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	if ($('#chart-container').length) {
+	if ($('#trans-chart-container').length) {
 		google.charts.load('current', {packages: ['corechart']});
 		google.charts.setOnLoadCallback(drawChart);
 
@@ -28,9 +28,34 @@ $(document).ready(function(){
 	      	};
 
 			
-			 var chart = new google.visualization.ColumnChart(document.getElementById('chart-container'));
+			 var chart = new google.visualization.ColumnChart(document.getElementById('trans-chart-container'));
 
 			chart.draw(view, options)
 		};
 	};
+
+	if ($('#dept-chart-container').length) {
+		google.charts.load('current', {packages: ['corechart', 'line']});
+		google.charts.setOnLoadCallback(drawChart);
+
+		function drawChart() {
+			var dataArray = [["Date", "Retail Value"]]
+			$('.monthly-values').each(function() {
+				dataArray.push([new Date(Date.parse($(this).find('.inventory-date').html())), parseFloat($(this).find('.inventory-value').html())])
+			});
+			var data = new google.visualization.arrayToDataTable(dataArray);
+			var options = {
+				hAxis: {title: 'Date', format: 'MM/dd/yy'},
+				vAxis: {title: 'Total Inventory Retail Value', format: '$'},
+				legend: { position: "none" },
+				pointSize: 10,
+	          	series: { 0: { pointShape: 'square' } }
+			}
+
+			var chart = new google.visualization.LineChart(document.getElementById('dept-chart-container'));
+
+			chart.draw(data, options);
+
+		}
+	}	
 });

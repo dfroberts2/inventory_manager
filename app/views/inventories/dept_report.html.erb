@@ -17,18 +17,18 @@
 		<th class="col-md-1">Current</th>
 		<th class="col-md-1">Prior</th>
 	</tr>
-	<% @inventory.current_and_previous_categories.each do |current, previous| %>
+	<% @inventory.categories_alphabetically.each do |category| %>
 		<tr class="row">
-			<td class="col-md-3"><%= Category.full_name(current) %></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(current.sum_cost_prices) %></span></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(current.sum_retail_prices) %></span></td>
-			<td class="col-md-1"><%=  number_to_percentage(current.margin_percent, precision: 0) %></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(previous.sum_cost_prices) %></span></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(previous.sum_retail_prices) %></span></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(current.sum_cost_prices - previous.sum_cost_prices) %></span></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(current.sum_retail_prices - previous.sum_retail_prices) %></span></td>
-			<td class="col-md-1"><%= number_to_percentage(current.allocation_percent, precision: 1) %></td>
-			<td class="col-md-2"><%= number_to_percentage(previous.allocation_percent, precision: 1) %></td>
+			<td class="col-md-3"><%= Category.full_name(category) %></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(category.sum_cost_prices) %></span></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(category.sum_retail_prices) %></span></td>
+			<td class="col-md-1"><%=  number_to_percentage(category.margin_percent, precision: 0) %></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(category.previous_inventory_same_category.sum_cost_prices) %></span></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(category.previous_inventory_same_category.sum_retail_prices) %></span></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(category.sum_cost_prices - category.previous_inventory_same_category.sum_cost_prices) %></span></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= convert_to_dollar(category.sum_retail_prices - category.previous_inventory_same_category.sum_retail_prices) %></span></td>
+			<td class="col-md-1"><%= number_to_percentage(category.allocation_percent, precision: 1) %></td>
+			<td class="col-md-2"><%= number_to_percentage(category.previous_inventory_same_category.allocation_percent, precision: 1) %></td>
 		</tr>
 	<% end %>
 		<tr class="row total-line">
@@ -44,3 +44,13 @@
 			<td class="col-md-1"></td>
 		</tr>
 </table>
+<table class="inventory-history">
+	<% @inventory.business.all_reports_up_to(@inventory).each do |inventory| %>
+		<tr class="monthly-values">
+			<td class="inventory-date"><%= inventory.date %></td>
+			<td class="inventory-value"><%= convert_to_dollar(inventory.total_retail_value) %></td>
+		</tr>
+	<% end %>
+</table>
+<div id="dept-chart-container">
+</div>
