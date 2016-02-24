@@ -31,7 +31,7 @@ class Category < ActiveRecord::Base
 	end
 
 	def sum_retail_prices
-		category_items.map{ |item| item.retail_price}.inject(:+)
+		category_items.map{ |item| item.retail_price*item.quantity}.inject(:+)
 	end
 
 	def sum_cost_prices
@@ -40,5 +40,14 @@ class Category < ActiveRecord::Base
 
 	def allocation_percent
 		100 * sum_retail_prices / inventory.total_retail_value
+	end
+
+	def margin_percent
+		margin_value * 100
+	end
+
+	def previous_inventory_same_category
+		last_inventory = inventory.business.previous_inventory(inventory)
+		Category.find_by(category_name: category_name, inventory: last_inventory)
 	end
 end

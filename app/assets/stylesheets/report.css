@@ -1,4 +1,4 @@
-.table-container {
+.trans-table-container {
 	width: 65%;
 	margin: auto;
 }
@@ -7,7 +7,11 @@
 	font-weight: bold;
 }
 
-#chart-container {
+#trans-chart-container {
 	width: 95%;
 	margin: auto;
+}
+
+.inventory-history{
+	display: none;
 }

@@ -11,6 +11,7 @@ class  CategoryScannersController < ApplicationController
 			redirect_to inventory_path(scanner.inventory), notice: "Please upload a .txt or .csv file"
 		else
 			CategoryScanner.clear_and_import(params[:file], scanner)
+			scanner.inventory.clear_empty_categories
 			redirect_to inventory_path(scanner.inventory)
 		end
 	end

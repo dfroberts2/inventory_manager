@@ -1,0 +1,56 @@
+<div class="row">
+	<h2 class="col-md-3 col-md-offset-3">CURRENT</h2>
+	<h2 class="col-md-2">PRIOR</h2>
+	<h2 class="col-md-2">VARIANCE</h2>
+	<h2 class="col-md-2">ALLOCATION</h2>
+</div>
+<table class="table">
+	<tr class="row">
+		<th class="col-md-3">Category</th>
+		<th class="col-md-1">Cost</th>
+		<th class="col-md-1">Retail</th>
+		<th class="col-md-1">Mgn</th>
+		<th class="col-md-1">Cost</th>
+		<th class="col-md-1">Retail</th>
+		<th class="col-md-1">Cost</th>
+		<th class="col-md-1">Retail</th>
+		<th class="col-md-1">Current</th>
+		<th class="col-md-1">Prior</th>
+	</tr>
+	<% @inventory.categories_alphabetically.each do |category| %>
+		<tr class="row">
+			<td class="col-md-3"><%= Category.full_name(category) %></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_cost_prices) %></span></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_retail_prices) %></span></td>
+			<td class="col-md-1"><%=  number_to_percentage(category.margin_percent, precision: 0) %></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.previous_inventory_same_category.sum_cost_prices) %></span></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.previous_inventory_same_category.sum_retail_prices) %></span></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_cost_prices - category.previous_inventory_same_category.sum_cost_prices) %></span></td>
+			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_retail_prices - category.previous_inventory_same_category.sum_retail_prices) %></span></td>
+			<td class="col-md-1"><%= number_to_percentage(category.allocation_percent, precision: 1) %></td>
+			<td class="col-md-2"><%= number_to_percentage(category.previous_inventory_same_category.allocation_percent, precision: 1) %></td>
+		</tr>
+	<% end %>
+		<tr class="row total-line">
+			<td class="col-md-3">Total:</td>
+			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.total_cost_value) %></td>
+			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.total_retail_value) %></td>
+			<td class="col-md-1"></td>
+			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.business.previous_inventory(@inventory).total_cost_value) %></td>
+			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.business.previous_inventory(@inventory).total_retail_value) %></td>
+			<td class="col-md-1"></td>
+			<td class="col-md-1"></td>
+			<td class="col-md-1"></td>
+			<td class="col-md-1"></td>
+		</tr>
+</table>
+<table class="inventory-history">
+	<% @inventory.business.all_reports_up_to(@inventory).each do |inventory| %>
+		<tr class="monthly-values">
+			<td class="inventory-date"><%= inventory.date %></td>
+			<td class="inventory-value"><%= convert_to_dollar(inventory.total_retail_value) %></td>
+		</tr>
+	<% end %>
+</table>
+<div id="dept-chart-container">
+</div>

@@ -10,7 +10,7 @@ class Inventory < ActiveRecord::Base
 	end
 
 	def total_retail_value
-		category_items.map {|item| item.retail_price}.inject(:+)
+		categories.map {|category| category.sum_retail_prices}.inject(:+)
 	end
 
 	def total_cost_value
@@ -21,5 +21,9 @@ class Inventory < ActiveRecord::Base
 		categories.each do |category|
 			category.destroy if category.category_items.empty?
 		end
+	end
+
+	def categories_alphabetically
+		categories.sort_by{ |category| Category.full_name(category) }
 	end
 end
