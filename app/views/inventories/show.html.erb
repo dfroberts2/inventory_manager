@@ -1,7 +1,11 @@
 <div class="inventory-container">
 	<div class="row">
+		<%= link_to "Previous Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, true)), class: "btn btn-info btn-default back-button col-md-2"%>
+		<%= link_to "Next Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, false)), class: "btn btn-info btn-default back-button col-md-2 col-md-offset-8"%>
+	</div>
+	<div class="row">
 		<h1 class="col-md-6"><%= @inventory.business.name %></h1>
-		<h1 class="col-md-6"><%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business) %></h1>
+		<h1><%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business), class: "btn btn-info btn-default back-button col-md-2 col-md-offset-2"%></h1>
 	</div>
 	<h2><%= @inventory.date.to_date%> Inventory</h2>
 	<div class="category row">

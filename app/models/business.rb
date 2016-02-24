@@ -23,6 +23,17 @@ class Business < ActiveRecord::Base
 		end
 	end
 
+	def previous_next_repeat(inventory, pre)
+		inventory_index = chronological_inventories.index(inventory)
+		if pre
+			chronological_inventories[inventory_index - 1]
+		elsif inventory == chronological_inventories.last
+			chronological_inventories.first
+		else
+			chronological_inventories[inventory_index + 1]
+		end
+	end
+
 	def all_reports_up_to(inventory)
 		chronological_inventories[0..chronological_inventories.index(inventory)]
 	end

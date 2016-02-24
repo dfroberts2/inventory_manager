@@ -26,4 +26,11 @@ class Inventory < ActiveRecord::Base
 	def categories_alphabetically
 		categories.sort_by{ |category| Category.full_name(category) }
 	end
+
+	def update_margins_to_previous_inventory
+		categories.each do |category|
+			category.margin_value = category.previous_inventory_same_category.margin_value
+			category.save
+		end
+	end
 end
