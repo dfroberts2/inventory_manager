@@ -23,6 +23,9 @@ class InventoriesController < ApplicationController
 		redirect_to inventory_path(inventory), notice: "Updated Margin Values"
 	end
 
+	def update_margins_previous
+	end
+
 	def trans_report
 		@inventory = Inventory.find(params[:id])
 	end
