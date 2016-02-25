@@ -18,5 +18,12 @@
 
 .neg-val{
 	color: red;
-	font-weight: bold;
+}
+
+.section-header {
+	border-bottom: 5px solid;
+}
+
+.header-line {
+	margin-bottom: 0;
 }

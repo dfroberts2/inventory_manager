@@ -9,7 +9,7 @@
 	</div>
 	<h2><%= @inventory.date.to_date%> Inventory</h2>
 	<div class="category row">
-		<h3 class="report-header">Report by Category</h3>
+		<h3 class="report-type-header">Report by Category</h3>
 		<div class="scanner col-md-8">
 			<h3>Scanner</h3>
 			<ol>
@@ -39,14 +39,16 @@
 		<div class="reports col-md-4">
 			<h3>Generate Reports</h3>
 			<ul>
-				<li><%= link_to "View Transaction Report", trans_report_path(@inventory) %></li>
-				<li><%= link_to "View Department Report", dept_report_path(@inventory) %></li>
+				<li><%= link_to "View Transfer Report", trans_report_path(@inventory) %></li>
+				<% if @inventory.business.previous_inventory(@inventory) != nil %>
+					<li><%= link_to "View Department Report", dept_report_path(@inventory) %></li>
+				<% end %>
 			</ul>
 		</div>
 	</div>
 
 	<div class="category row">
-		<h3 class="report-header">Report by UPC Code</h3>
+		<h3 class="report-type-header">Report by UPC Code</h3>
 		<div class="scanner col-md-6">
 			
 		</div>

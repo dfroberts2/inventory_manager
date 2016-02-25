@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-md-1 col-md-offset-1">
+		<%= image_tag "BBS_logo.png" %>
+	</div>
+	<div class="col-md-3">
+		<p class="header-line">Better Business Services, L.L.C.</p>
+		<p class="header-line">85 S. Chestnut Street</p>
+		<p class="header-line">New Paltz, NY 12561</p>
+		<p class="header-line">Phone: (845) - 790 3343</p>
+		<p class="header-line">Fax: (845) - 790 3342</p>
+		<p class="header-line">Email: contact@bbsgroup.biz</p>
+	</div>
+	<div class="col-md-4 col-md-offset-3">
+		<p class="header-line">Report: <%= report_type %></p>
+		<p class="header-line">Date: <%= Date.today %></p>
+		<p class="header-line">Client: <%=@inventory.business.name %></p>
+		<p class="header-line">Inventory Date: <%= @inventory.date %></p>
+		<% if @inventory.business.previous_inventory(@inventory) != nil %>
+			<p class="header-line">Prior Inventory Date: <%= @inventory.business.previous_inventory(@inventory).date %></p>
+		<% end %>
+	</div>
+</div>
