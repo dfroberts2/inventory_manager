@@ -1,14 +1,43 @@
 .inventory-container {
-	width: 65%;
+	width: 60%;
 	margin: auto;
 }
 
 .report-type-header {
-	width: 50%;
-	margin: auto;
+	margin: 0;
+	padding: 0;
+	border-bottom: solid 2px #d8d8d8;
+	text-align: center;
+	background-color: #f5f5f5;
 }
 
 .edit-margins {
 	width: 45%;
 	margin: auto;
+}
+
+.category {
+	border: solid 2px #d8d8d8;
+}
+
+.scanner {
+	border-right: solid 2px #d8d8d8;
+	padding-left: 0;
+	padding-right: 0;
+}
+.reports {
+	padding-left: 0;
+	padding-right: 0;
+}
+.inventory-sub-header {
+	margin: 0;
+	padding: 0;
+	border-bottom: solid 2px #d8d8d8;
+	text-align: center;
+	background-color: #f5f5f5;
+}
+
+.report-button {
+	margin-top: 1em;
+	margin-bottom: 1em;
 }

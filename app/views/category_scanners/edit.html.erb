@@ -1,7 +1,7 @@
 <div class="edit-scanner">
 	<div class="row">
-	<h2 class="col-md-6">Update Scanner Items:</h2>
-	<h2 class="col-md-6"><%= link_to "Back", inventory_path(@scanner.inventory), class: "btn btn-info btn-default back-button" %></h2>
+		<h2 class="col-md-6">Update Scanner Items:</h2>
+		<h2><%= link_to "Back", inventory_path(@scanner.inventory), class: "btn btn-info btn-default back-button col-md-3" %></h2>
 	</div>
 	<%= render partial: "form_labels" %>
 	<%= form_for @scanner do |f| %>
@@ -23,7 +23,7 @@
 			</div>
 		<% end %>
 		<div class="row">
-		<%= f.submit "Update Scanner", class: "col-md-10 btn btn-default"%>
+		<%= f.submit "Update Scanner", class: "col-md-10 btn btn-default btn-info"%>
 		</div>
 	<% end %>
 	<h2>Add Scanner Item:</h2>
