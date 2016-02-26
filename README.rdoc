@@ -1,28 +1,12 @@
-== README
+#Inventory Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+by David Roberts
 
-Things you may want to cover:
+Inventory Manager is an application designed to automatically generate inventory reports for small businesses. Users upload inventory data files (.txt or .csv) that organize products by product category, or product upc code. Users can add new clients, stores and inventory dates.
 
-* Ruby version
+Tech Stack:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    Ruby on Rails
+    JQuery
+    Google Visualization API
+    Bootstrap CSS
