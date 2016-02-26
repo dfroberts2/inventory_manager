@@ -5,10 +5,11 @@
 	</div>
 	<div class="row">
 		<h2 class="col-md-6">Filter year:</h2>
-		<h2><%= link_to "New Inventory", new_business_inventory_path(@business), class: "new-inventory btn btn-info btn-default back-button col-md-3 col-md-offset-3"%></h1>
+		<h2 class="new-form-button btn btn-info col-md-3 col-md-offset-3">New Inventory</h2>
 	</div>
 	<div class="row">
-		<div class="new-inventory-form col-md-3 cold-md-offset-9">
+		<div class="new-form col-md-5 col-md-offset-7">
+			<%= render partial: "/inventories/new", locals: {business: @business, inventory: @inventory} %>
 		</div>
 	</div>
 	<select class="year-select form-control">

@@ -5,6 +5,10 @@ $(document).ready(function(){
 		$.get(url, function(response){
 		}).then(function(response){
 			$(".business-links").html(response)
+			$('.new-business-button').click(function(event) {
+				event.preventDefault();
+				$('.new-business-form').toggle();
+			});
 		}).fail(function(response){
 			console.log("fail" + response)
 		})

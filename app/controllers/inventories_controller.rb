@@ -37,8 +37,19 @@ class InventoriesController < ApplicationController
 		@inventory = Inventory.find(params[:id])
 	end
 
-	def new
-		@business = Business.find(params[:id])
-		@inventory = Inventory.new
+	def create
+		business = Business.find(params[:id])
+		if params[:inventory][:date] != ""
+			date = Date.parse(params[:inventory][:date])
+			inventory = Inventory.new(date: DateTime.new(date.year,date.month,date.day), business: business)
+			if inventory.save
+				notice = "Saved Inventory"
+			else
+				notice = "Didn't Save Inventory"
+			end
+		else
+			notice = "Please select date"
+		end
+		redirect_to owner_business_path(business.owner, business), notice: notice
 	end
 end

@@ -12,13 +12,6 @@ $(document).ready(function(){
 
 			var view = new google.visualization.DataView(data)
 
-			// view.setColumns([0, 1,
-	  //                      { calc: "stringify",
-	  //                        sourceColumn: 1,
-	  //                        type: "string",
-	  //                        role: "annotation" },
-	  //                      2]);
-
 	      	var options = {
 	        	title: "Retail Values by Category",
 	        	bar: {groupWidth: "95%"},
@@ -45,6 +38,7 @@ $(document).ready(function(){
 			var options = {
 				hAxis: {title: 'Date', format: 'MM/dd/yy'},
 				vAxis: {title: 'Total Inventory Retail Value', format: '$###,###', minValue: 0},
+				height: 300,
 				legend: { position: "none" },
 				pointSize: 10,
 	          	series: { 0: { pointShape: 'square' } }
