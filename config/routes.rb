@@ -62,7 +62,7 @@ Rails.application.routes.draw do
     resources :businesses, only: [:index, :show]
   end
 
-  resources :inventories, only: [:show, :new, :create] do
+  resources :inventories, only: [:show] do
     resources :category_scanners, only: [:create]
     resources :categories, only: [:edit, :update]
   end
@@ -79,4 +79,6 @@ Rails.application.routes.draw do
   end
 
   get 'owners/:id/businesses/:id/inventories/:year' => 'inventories#index_by_year'
+  get 'businesses/:id/inventories/new' => 'inventories#new', as: :new_business_inventory
+  post 'businesses/:id/inventories' => 'inventories#create', as: :business_inventories
 end

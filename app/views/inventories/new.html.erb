@@ -1,0 +1,9 @@
+<%= form_for [@business, @inventory] do |f| %>
+	<div class="form-group">
+		<%= f.label :date, "Select Date"%>
+		<%= f.date_field :date, min: Time.zone.today.beginning_of_year, max: Time.zone.today.end_of_year, class: "form-control" %>
+	</div>
+	<div class="form-group">
+		<%= f.submit "Create", class: "form-control" %>
+	</div>
+<% end %>

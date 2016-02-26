@@ -36,4 +36,9 @@ class InventoriesController < ApplicationController
 	def dept_report
 		@inventory = Inventory.find(params[:id])
 	end
+
+	def new
+		@business = Business.find(params[:id])
+		@inventory = Inventory.new
+	end
 end
