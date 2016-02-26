@@ -15,3 +15,15 @@
 .inventory-history{
 	display: none;
 }
+
+.neg-val{
+	color: red;
+}
+
+.section-header {
+	border-bottom: 5px solid;
+}
+
+.header-line {
+	margin-bottom: 0;
+}

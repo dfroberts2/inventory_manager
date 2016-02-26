@@ -1,13 +1,17 @@
 <div class="inventory-container">
 	<div class="row">
+		<%= link_to "Previous Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, true)), class: "btn btn-info btn-default back-button col-md-2"%>
+		<%= link_to "Next Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, false)), class: "btn btn-info btn-default back-button col-md-2 col-md-offset-8"%>
+	</div>
+	<div class="row">
 		<h1 class="col-md-6"><%= @inventory.business.name %></h1>
-		<h1 class="col-md-6"><%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business) %></h1>
+		<h1><%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business), class: "btn btn-info btn-default back-button col-md-2 col-md-offset-4"%></h1>
 	</div>
 	<h2><%= @inventory.date.to_date%> Inventory</h2>
 	<div class="category row">
-		<h3 class="report-header">Report by Category</h3>
+		<h3 class="report-type-header">Report by Category</h3>
 		<div class="scanner col-md-8">
-			<h3>Scanner</h3>
+			<h3 class="inventory-sub-header">Scanners</h3>
 			<ol>
 				<% @inventory.category_scanners.each do |scanner| %>
 				<div class="row">
@@ -19,9 +23,9 @@
 					</div>
 					<div class="col-md-6">
 						<%= form_tag import_category_scanners_path, multipart: true do %>
-						<%= file_field_tag :file%>
-						<%= hidden_field_tag :scanner_id, scanner.id %>
-						<%= submit_tag "Add Scanner Data", class: "btn btn-default" %>
+							<%= file_field_tag :file%>
+							<%= hidden_field_tag :scanner_id, scanner.id %>
+							<%= submit_tag "Add Scanner Data", class: "btn btn-default" %>
 						<% end %>
 					</div>
 				</div>
@@ -33,16 +37,18 @@
 			</div>
 		</div>
 		<div class="reports col-md-4">
-			<h3>Generate Reports</h3>
-			<ul>
-				<li><%= link_to "View Transaction Report", trans_report_path(@inventory) %></li>
-				<li><%= link_to "View Department Report", dept_report_path(@inventory) %></li>
-			</ul>
+			<h3 class="inventory-sub-header">Generate Reports</h3>
+			
+				<div class="row"><%= link_to "View Transfer Report", trans_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 report-button" %></div>
+				<% if @inventory.business.previous_inventory(@inventory) != nil %>
+					<div class="row"><%= link_to "View Department Report", dept_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 report-button" %></div>
+				<% end %>
+			
 		</div>
 	</div>
 
 	<div class="category row">
-		<h3 class="report-header">Report by UPC Code</h3>
+		<h3 class="report-type-header">Report by UPC Code</h3>
 		<div class="scanner col-md-6">
 			
 		</div>

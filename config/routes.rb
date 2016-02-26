@@ -58,11 +58,11 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
 
   post 'login' => 'sessions#create'
-  resources :owners, only: [:index] do
-    resources :businesses, only: [:index, :show]
+  resources :owners, only: [:index, :create] do
+    resources :businesses, only: [:index, :show, :create]
   end
 
-  resources :inventories, only: [:show, :new, :create] do
+  resources :inventories, only: [:show] do
     resources :category_scanners, only: [:create]
     resources :categories, only: [:edit, :update]
   end
@@ -79,4 +79,5 @@ Rails.application.routes.draw do
   end
 
   get 'owners/:id/businesses/:id/inventories/:year' => 'inventories#index_by_year'
+  post 'businesses/:id/inventories' => 'inventories#create', as: :business_inventories
 end

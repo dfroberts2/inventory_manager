@@ -1,4 +1,12 @@
 .select-container {
-	width: 45%;
+	width: 50%;
 	margin: auto;
+}
+
+.new-form {
+	display: none;
+}
+
+.new-business-form {
+	display: none;
 }

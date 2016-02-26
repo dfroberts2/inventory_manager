@@ -1,6 +1,12 @@
 <div class="select-container">
-	<h1>Select Owner:</h1>
-	<select class="owner-select">
+	<div class="row">
+		<h2 class="col-md-6">Select Owner:</h2>
+		<h2 class="new-form-button btn btn-info col-md-3 col-md-offset-3">New Owner</h2>
+	</div>
+	<div class="row new-form col-md-5 col-md-offset-7">
+		<%= render partial: "new", locals: {owner: @owner} %>
+	</div>
+	<select class="owner-select form-control">
 		<% @owners.each do |owner| %>
 			<option value="<%=owner.id%>"><%=owner.name%></option>
 			<%end%>

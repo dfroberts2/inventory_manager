@@ -1,3 +1,14 @@
+<div class="header">
+	<%= render partial: "report_header", locals: {report_type: "Inventory by department"} %>
+</div>
+<div class="section-header">
+	<h4>Monthly Physical Inventory</h4>
+</div>
+<div id="dept-chart-container">
+</div>
+<div class="section-header">
+	<h4>Inventory Summary</h4>
+</div>
 <div class="row">
 	<h2 class="col-md-3 col-md-offset-3">CURRENT</h2>
 	<h2 class="col-md-2">PRIOR</h2>
@@ -20,13 +31,13 @@
 	<% @inventory.categories_alphabetically.each do |category| %>
 		<tr class="row">
 			<td class="col-md-3"><%= Category.full_name(category) %></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_cost_prices) %></span></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_retail_prices) %></span></td>
+			<td class="col-md-1"><span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_cost_prices) %></span></td>
+			<td class="col-md-1"><span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_retail_prices) %></span></td>
 			<td class="col-md-1"><%=  number_to_percentage(category.margin_percent, precision: 0) %></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.previous_inventory_same_category.sum_cost_prices) %></span></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.previous_inventory_same_category.sum_retail_prices) %></span></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_cost_prices - category.previous_inventory_same_category.sum_cost_prices) %></span></td>
-			<td class="col-md-1">$<span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.sum_retail_prices - category.previous_inventory_same_category.sum_retail_prices) %></span></td>
+			<td class="col-md-1"><span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.previous_inventory_same_category.sum_cost_prices) %></span></td>
+			<td class="col-md-1"><span class="cost-sum"><%= number_with_delimiter convert_to_dollar(category.previous_inventory_same_category.sum_retail_prices) %></span></td>
+			<td class="col-md-1"><span class="cost-sum neg-pos-val"><%= convert_to_dollar(category.sum_cost_prices - category.previous_inventory_same_category.sum_cost_prices) %></span></td>
+			<td class="col-md-1"><span class="cost-sum neg-pos-val"><%= convert_to_dollar(category.sum_retail_prices - category.previous_inventory_same_category.sum_retail_prices) %></span></td>
 			<td class="col-md-1"><%= number_to_percentage(category.allocation_percent, precision: 1) %></td>
 			<td class="col-md-2"><%= number_to_percentage(category.previous_inventory_same_category.allocation_percent, precision: 1) %></td>
 		</tr>
@@ -38,8 +49,8 @@
 			<td class="col-md-1"></td>
 			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.business.previous_inventory(@inventory).total_cost_value) %></td>
 			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.business.previous_inventory(@inventory).total_retail_value) %></td>
-			<td class="col-md-1"></td>
-			<td class="col-md-1"></td>
+			<td class="col-md-1">$<span class="neg-pos-val"><%= convert_to_dollar(@inventory.total_cost_value - @inventory.business.previous_inventory(@inventory).total_cost_value) %></span></td>
+			<td class="col-md-1">$<span class="neg-pos-val"><%= convert_to_dollar(@inventory.total_retail_value - @inventory.business.previous_inventory(@inventory).total_retail_value) %></span></td>
 			<td class="col-md-1"></td>
 			<td class="col-md-1"></td>
 		</tr>
@@ -52,5 +63,3 @@
 		</tr>
 	<% end %>
 </table>
-<div id="dept-chart-container">
-</div>

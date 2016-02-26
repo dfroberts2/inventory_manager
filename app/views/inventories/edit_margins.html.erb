@@ -1,10 +1,12 @@
 <div class="edit-margins">
 	<div class="row">
 		<h2 class="col-md-6">Edit Margins</h2>
-		<h2 class="col-md-6"><%= link_to "Back", inventory_path(@inventory) %></h2>
+		<h2 class="col-md-6"><%= link_to "Back", inventory_path(@inventory), class: "btn btn-info btn-default back-button" %></h2>
 	</div>
 	<div class="row">
-		<%= button_to "Update All Margin To Previous Inventory's", url: :update_margins_previous, method: :put%>
+		<%= form_tag update_margins_previous_path(@inventory), method: :put do %>
+			<%= submit_tag "Update to Previous Inventory's Margins", class: "col-md-12 btn btn-info btn-default" %>
+		<% end %>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
