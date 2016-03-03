@@ -24,8 +24,8 @@
 		<% end %>
 		<tr class="row total-line">
 			<td class="col-md-4">Total:</td>
-			<td class="col-md-2">$<%= number_with_delimiter convert_to_dollar(@inventory.total_cost_value) %></td>
-			<td class="col-md-2">$<%= number_with_delimiter convert_to_dollar(@inventory.total_retail_value) %></td>
+			<td class="col-md-2">$<%= number_with_delimiter convert_to_dollar(@inventory.cat_total_cost_value) %></td>
+			<td class="col-md-2">$<%= number_with_delimiter convert_to_dollar(@inventory.cat_total_retail_value) %></td>
 			<td class="col-md-2"></td>
 			<td class="col-md-2"></td>
 		</tr>

@@ -65,17 +65,24 @@ Rails.application.routes.draw do
   resources :inventories, only: [:show] do
     resources :category_scanners, only: [:create]
     resources :categories, only: [:edit, :update]
+    resources :upc_scanners, only: [:create]
   end
 
   get 'inventories/:id/edit_margins' => 'inventories#edit_margins', as: :edit_margins
   put 'inventories/:id' => 'inventories#update_margins', as: :update_margins
   put 'inventories/:id/previous' => 'inventories#update_margins_previous', as: :update_margins_previous
-  get 'inventories/:id/trans_report' => 'inventories#trans_report', as: :trans_report
+  get 'inventories/:id/cat_trans_report' => 'inventories#cat_trans_report', as: :cat_trans_report
+  get 'inventories/:id/upc_trans_report' => 'inventories#upc_trans_report', as: :upc_trans_report
   get 'inventories/:id/dept_report' => 'inventories#dept_report', as: :dept_report
 
   resources :category_scanners, only: [:edit, :update, :destroy] do
     collection {post :import}
     post 'category_items' => 'category_items#create'
+  end
+
+  resources :upc_scanners, only: [:edit, :update, :destroy] do
+    collection {post :import}
+    post 'upc_items' => 'category_items#create'
   end
 
   get 'owners/:id/businesses/:id/inventories/:year' => 'inventories#index_by_year'

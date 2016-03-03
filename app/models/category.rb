@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
 	has_many :category_items
 
 	def self.full_name(category)
-		key = {
+		category_key = {
 		"cdy": "Candy",
 		"snk": "Snack Foods",
 		"gro": "Grocery",
@@ -23,10 +23,10 @@ class Category < ActiveRecord::Base
 		"beef": "Beef Products",
 		"cheese": "Cheese Products"
 		}
-		if key[category.category_name.to_sym] == nil
+		if category_key[category.category_name.to_sym] == nil
 			category.category_name.capitalize + " Products"
 		else
-			key[category.category_name.to_sym]
+			category_key[category.category_name.to_sym]
 		end
 	end
 
@@ -39,7 +39,7 @@ class Category < ActiveRecord::Base
 	end
 
 	def allocation_percent
-		100 * sum_retail_prices / inventory.total_retail_value
+		100 * sum_retail_prices / inventory.cat_total_retail_value
 	end
 
 	def margin_percent

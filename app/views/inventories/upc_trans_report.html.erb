@@ -1,0 +1,32 @@
+<div class="report-header">
+	<%= render partial: "report_header", locals: {report_type: "Transfer"} %>
+</div>
+<div class="section-header">
+	<h4>Inventory Summary</h4>
+</div>
+<div class="trans-table-container">
+	<table class="table">
+		<tr class="row">
+			<th class="col-md-4">Brand</th>
+			<th class="col-md-4">Retail</th>
+			<th class="col-md-4">Allocation</th>
+		</tr>
+		<% @inventory.brands.each do |brand| %>
+			<tr class="row category-row">
+				<td class="col-md-4 category-name"><%= brand.brand_name %></td>
+				<td class="col-md-4">$<span class="retail-sum"><%= number_with_delimiter convert_to_dollar(brand.sum_retail_prices)%></span></td></td>
+				<td class="col-md-4"><%= number_to_percentage(brand.allocation_percent, precision: 1) %></td>
+			</tr>
+		<% end %>
+		<tr class="row total-line">
+			<td class="col-md-4">Total:</td>
+			<td class="col-md-4">$<%= number_with_delimiter convert_to_dollar(@inventory.upc_total_retail_value) %></td>
+			<td class="col-md-4"></td>
+		</tr>
+	</table>
+</div>
+<div class="section-header">
+	<h4>Inventory Summary</h4>
+</div>	
+<!-- <div id="trans-chart-container"> -->
+<!-- </div> -->

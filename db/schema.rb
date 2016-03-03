@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222165830) do
+ActiveRecord::Schema.define(version: 20160303042220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string  "brand_name",   null: false
+    t.integer "inventory_id", null: false
+  end
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name",       null: false
@@ -48,6 +53,11 @@ ActiveRecord::Schema.define(version: 20160222165830) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "gcp_codes", force: :cascade do |t|
+    t.string "gcp",          null: false
+    t.string "company_name", null: false
+  end
+
   create_table "inventories", force: :cascade do |t|
     t.datetime "date",        null: false
     t.integer  "business_id", null: false
@@ -59,6 +69,27 @@ ActiveRecord::Schema.define(version: 20160222165830) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "upc_codes", force: :cascade do |t|
+    t.string "upc",          null: false
+    t.string "product_name"
+  end
+
+  create_table "upc_items", force: :cascade do |t|
+    t.integer  "upc_scanner_id", null: false
+    t.string   "upc",            null: false
+    t.float    "quantity",       null: false
+    t.float    "retail_price",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "brand_id"
+  end
+
+  create_table "upc_scanners", force: :cascade do |t|
+    t.integer  "inventory_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

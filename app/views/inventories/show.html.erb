@@ -10,7 +10,7 @@
 	<h2><%= @inventory.date.to_date%> Inventory</h2>
 	<div class="category row">
 		<h3 class="report-type-header">Report by Category</h3>
-		<div class="scanner col-md-8">
+		<div class="cat-scan-border scanner col-md-8">
 			<h3 class="inventory-sub-header">Scanners</h3>
 			<ol>
 				<% @inventory.category_scanners.each do |scanner| %>
@@ -36,10 +36,10 @@
 				<%= link_to "Edit Category Margins", edit_margins_path(@inventory), class: "col-md-6" %>
 			</div>
 		</div>
-		<div class="reports col-md-4">
+		<div class="cat-rep-border reports col-md-4">
 			<h3 class="inventory-sub-header">Generate Reports</h3>
 			
-				<div class="row"><%= link_to "View Transfer Report", trans_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 report-button" %></div>
+				<div class="row"><%= link_to "View Transfer Report", cat_trans_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 report-button" %></div>
 				<% if @inventory.business.previous_inventory(@inventory) != nil %>
 					<div class="row"><%= link_to "View Department Report", dept_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 report-button" %></div>
 				<% end %>
@@ -49,10 +49,39 @@
 
 	<div class="category row">
 		<h3 class="report-type-header">Report by UPC Code</h3>
-		<div class="scanner col-md-6">
-			
+		<div class="upc-scan-border scanner col-md-8">
+			<h3 class="inventory-sub-header">Scanners</h3>
+			<ol>
+				<% @inventory.upc_scanners.each do |scanner| %>
+				<div class="row">
+					<div class="col-md-4">
+						<li><%= link_to "Edit Scanner", edit_upc_scanner_path(scanner)%></li>
+					</div>
+					<div class="col-md-2">
+						<p><%= link_to "Delete", upc_scanner_path(scanner), method: :delete %></p>
+					</div>
+					<div class="col-md-6">
+						<%= form_tag import_upc_scanners_path, multipart: true do %>
+							<%= file_field_tag :file%>
+							<%= hidden_field_tag :scanner_id, scanner.id %>
+							<%= submit_tag "Add Scanner Data", class: "btn btn-default" %>
+						<% end %>
+					</div>
+				</div>
+				<% end %>
+			</ol>
+			<div class="row">
+				<%= link_to "Add Scanner", inventory_upc_scanners_path(@inventory), method: :post, class: "col-md-6"%>
+			</div>
 		</div>
-		<div class="reports col-md-6">
+		<div class="upc-rep-border reports col-md-4">
+			<h3 class="inventory-sub-header">Generate Reports</h3>
+			
+				<div class="row"><%= link_to "View Transfer Report", upc_trans_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 report-button" %></div>
+				<% if @inventory.business.previous_inventory(@inventory) != nil %>
+					<div class="row"><%= link_to "View Department Report", dept_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 report-button" %></div>
+				<% end %>
+			
 		</div>
 	</div>
 </div>
