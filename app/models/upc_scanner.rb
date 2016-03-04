@@ -11,7 +11,7 @@ class UpcScanner < ActiveRecord::Base
 		scanner.upc_items.each {|item| item.destroy}
 		CSV.foreach(file.path) do |row|
 			brand = Brand.find_or_create_by(brand_name: Brand.match_upc_to_gcp(row[0]), inventory: scanner.inventory)
-			scanner.upc_items.create(brand: brand, quantity: row[1], retail_price: row[2], upc: row[0])
+			scanner.upc_items.create(product_name: UpcItem.match_upc_to_item(row[0]), brand: brand, quantity: row[1], retail_price: row[2], upc: row[0])
 		end
 	end
 
