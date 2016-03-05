@@ -44,13 +44,13 @@
 	<% end %>
 		<tr class="row total-line">
 			<td class="col-md-3">Total:</td>
-			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.total_cost_value) %></td>
-			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.total_retail_value) %></td>
+			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.cat_total_cost_value) %></td>
+			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.cat_total_retail_value) %></td>
 			<td class="col-md-1"></td>
-			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.business.previous_inventory(@inventory).total_cost_value) %></td>
-			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.business.previous_inventory(@inventory).total_retail_value) %></td>
-			<td class="col-md-1">$<span class="neg-pos-val"><%= convert_to_dollar(@inventory.total_cost_value - @inventory.business.previous_inventory(@inventory).total_cost_value) %></span></td>
-			<td class="col-md-1">$<span class="neg-pos-val"><%= convert_to_dollar(@inventory.total_retail_value - @inventory.business.previous_inventory(@inventory).total_retail_value) %></span></td>
+			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.business.previous_inventory(@inventory).cat_total_cost_value) %></td>
+			<td class="col-md-1">$<%= number_with_delimiter convert_to_dollar(@inventory.business.previous_inventory(@inventory).cat_total_retail_value) %></td>
+			<td class="col-md-1">$<span class="neg-pos-val"><%= convert_to_dollar(@inventory.cat_total_cost_value - @inventory.business.previous_inventory(@inventory).cat_total_cost_value) %></span></td>
+			<td class="col-md-1">$<span class="neg-pos-val"><%= convert_to_dollar(@inventory.cat_total_retail_value - @inventory.business.previous_inventory(@inventory).cat_total_retail_value) %></span></td>
 			<td class="col-md-1"></td>
 			<td class="col-md-1"></td>
 		</tr>
@@ -59,7 +59,7 @@
 	<% @inventory.business.all_reports_up_to(@inventory).each do |inventory| %>
 		<tr class="monthly-values">
 			<td class="inventory-date"><%= inventory.date %></td>
-			<td class="inventory-value"><%= convert_to_dollar(inventory.total_retail_value) %></td>
+			<td class="inventory-value"><%= convert_to_dollar(inventory.cat_total_retail_value) %></td>
 		</tr>
 	<% end %>
 </table>

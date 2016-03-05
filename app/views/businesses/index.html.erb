@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-6 col-xs-6">
 		<h2>Select Business:</h2>
 		<ul>
 			<% @businesses.each do |business| %>
@@ -7,8 +7,8 @@
 			<% end %>
 		</ul>
 	</div>
-	<div class="col-md-6">
-		<h2 class="new-business-button btn btn-info col-md-6 col-md-offset-6">New Business</h2>
+	<div class="col-md-6 col-xs-6">
+		<h2 class="new-business-button btn btn-info col-md-6 col-md-offset-6 col-xs-6 col-xs-offset-6">New Business</h2>
 		<div class="new-business-form">
 			<%= render partial: "new", locals: {owner: @owner, business: @business} %>
 		</div>
