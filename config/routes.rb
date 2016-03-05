@@ -82,7 +82,7 @@ Rails.application.routes.draw do
 
   resources :upc_scanners, only: [:edit, :update, :destroy] do
     collection {post :import}
-    post 'upc_items' => 'category_items#create'
+    post 'upc_items' => 'upc_items#create'
   end
 
   get 'owners/:id/businesses/:id/inventories/:year' => 'inventories#index_by_year'

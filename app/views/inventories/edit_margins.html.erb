@@ -1,35 +1,35 @@
 <div class="edit-margins">
 	<div class="row">
-		<h2 class="col-md-6">Edit Margins</h2>
-		<h2 class="col-md-6"><%= link_to "Back", inventory_path(@inventory), class: "btn btn-info btn-default back-button" %></h2>
+		<h2 class="col-md-6 col-xs-6">Edit Margins</h2>
+		<h2 class="col-md-6 col-xs-6"><%= link_to "Back", inventory_path(@inventory), class: "btn btn-info btn-default back-button col-md-6 col-md-offset-6 col-xs-6 col-xs-offset-6" %></h2>
 	</div>
 	<div class="row">
 		<%= form_tag update_margins_previous_path(@inventory), method: :put do %>
-			<%= submit_tag "Update to Previous Inventory's Margins", class: "col-md-12 btn btn-info btn-default" %>
+			<%= submit_tag "Update to Previous Inventory's Margins", class: "col-md-12 col-xs-12 btn btn-info btn-default" %>
 		<% end %>
 	</div>
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-6 col-xs-6">
 			<h3>Category</h3>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 col-xs-6">
 			<h3>Margin (use decimal)</h3>
 		</div>
 	</div>
 	<%= form_for @inventory, url: :update_margins, method: :put do |f| %>
 			<%= f.fields_for :categories do |c_f| %>
 				<div class="row form-group">
-					<div class="col-md-6">
+					<div class="col-md-6 col-xs-6">
 						<%= label_tag Category.full_name(c_f.object) %>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 col-xs-6">
 						<%= c_f.text_field :margin_value, class: 'form-control' %>
 					</div>
 				</div>
 			<% end %>	
 
 		<div class="row">
-			<%= f.submit "Update", class: "col-md-12 btn btn-default" %>
+			<%= f.submit "Update", class: "col-md-12 col-xs-12 btn btn-default" %>
 		</div>
 	<% end %>
 </div>

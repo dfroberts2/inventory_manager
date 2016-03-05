@@ -1,7 +1,8 @@
+<div>
 	<%= form_for [@scanner, @item] do |f| %>
 		<div class="row form-group">
 			<div class="col-md-3 col-xs-3">
-				<%= f.text_field :category, class: "form-control"%>
+				<%= f.text_field :upc, class: "form-control upc-input"%>
 			</div>
 			<div class="col-md-3 col-xs-3">
 				<%= f.text_field :quantity, class: "form-control"%>
@@ -9,8 +10,12 @@
 			<div class="col-md-3 col-xs-3">
 				<%= f.text_field :retail_price, class: "form-control"%>
 			</div>
+			<div class="col-md-3 col-xs-3">
+				<input class="form-group" type="file" accept="image/*;capture=camera">
+			</div>
 		</div>
 		<div class="row">
 			<%= f.submit "Add Item", class: "col-md-10 col-xs-10 btn btn-default btn-info"%>
 		</div>
 	<% end %>
+</div>
