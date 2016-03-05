@@ -11,7 +11,7 @@ class  UpcScannersController < ApplicationController
 			redirect_to inventory_path(scanner.inventory), notice: "Please upload a .txt or .csv file"
 		else
 			UpcScanner.clear_and_import(params[:file], scanner)
-			# scanner.inventory.clear_empty_categories
+			scanner.inventory.clear_empty_brands
 			redirect_to inventory_path(scanner.inventory)
 		end
 	end
@@ -31,6 +31,7 @@ class  UpcScannersController < ApplicationController
 				update_item.update_attributes(quantity: attributes[:quantity], retail_price: attributes[:retail_price])
 			end
 		end
+		scanner.inventory.clear_empty_brands
 		redirect_to edit_upc_scanner_path(scanner)
 	end
 

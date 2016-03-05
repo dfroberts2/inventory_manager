@@ -31,6 +31,13 @@ class Inventory < ActiveRecord::Base
 		end
 	end
 
+	def clear_empty_brands
+		brands.each do |brand|
+			brand.destroy if brand.upc_items.empty?
+		end
+	end
+
+
 	def categories_alphabetically
 		categories.sort_by{ |category| Category.full_name(category) }
 	end
