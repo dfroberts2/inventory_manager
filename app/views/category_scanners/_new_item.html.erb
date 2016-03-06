@@ -1,16 +1,33 @@
-	<%= form_for [@scanner, @item] do |f| %>
-		<div class="row form-group">
-			<div class="col-md-3 col-xs-3">
-				<%= f.text_field :category, class: "form-control"%>
-			</div>
-			<div class="col-md-3 col-xs-3">
-				<%= f.text_field :quantity, class: "form-control"%>
-			</div>
-			<div class="col-md-3 col-xs-3">
-				<%= f.text_field :retail_price, class: "form-control"%>
-			</div>
+<%= form_for [@scanner, @item], :html =>{class: 'hidden-xs'} do |f| %>
+	<div class="row form-group">
+		<div class="col-md-3 col-xs-3">
+			<%= f.text_field :category, class: "form-control"%>
 		</div>
-		<div class="row">
-			<%= f.submit "Add Item", class: "col-md-10 col-xs-10 btn btn-default btn-info"%>
+		<div class="col-md-3 col-xs-3">
+			<%= f.text_field :quantity, class: "form-control"%>
 		</div>
-	<% end %>
+		<div class="col-md-3 col-xs-3">
+			<%= f.text_field :retail_price, class: "form-control"%>
+		</div>
+	</div>
+	<div class="row">
+		<%= f.submit "Add Item", class: "col-md-12 btn btn-default btn-info"%>
+	</div>
+<% end %>
+
+<%= form_for [@scanner, @item], :html =>{class: 'hidden-lg hidden-md new-cat-item-mobile'} do |f| %>
+	<div class="row form-group">
+		<div class="col-md-3 col-xs-4">
+			<%= f.text_field :category, placeholder: "Category", class: "form-control cat-item-cat clearable"%>
+		</div>
+		<div class="col-md-3 col-xs-4">
+			<%= f.text_field :quantity, placeholder: "Quantity", class: "form-control cat-item-quantity clearable"%>
+		</div>
+		<div class="col-md-3 col-xs-4">
+			<%= f.text_field :retail_price, placeholder: "Retail Price", class: "form-control cat-item-retail clearable"%>
+		</div>
+	</div>
+	<div class="row">
+		<%= f.submit "Add Item", class: "col-xs-12 btn btn-default btn-info"%>
+	</div>
+<% end %>

@@ -1,12 +1,17 @@
 <div class="edit-scanner">
-	<div class="row">
-		<h2 class="col-md-6 col-xs-6">Add Scanner Item:</h2>
-		<h2><%= link_to "Back", inventory_path(@scanner.inventory), class: "btn btn-info btn-default back-button col-md-3 col-md-offset-3 col-xs-3 col-xs-offset-3" %></h2>
+	<div class="row hidden-md hidden-lg">
+		<%= link_to "Back", inventory_path(@scanner.inventory), class: "btn btn-info btn-default back-button col-xs-12" %>
 	</div>
-	<%= render partial: "form_labels" %>
+	<div class="row">
+		<h2 class="col-md-6 col-xs-12">Add Scanner Item:</h2>
+		<h2><%= link_to "Back", inventory_path(@scanner.inventory), class: "btn btn-info btn-default back-button col-md-3 col-md-offset-3 hidden-xs" %></h2>
+	</div>
+	<div class="hidden-xs">
+		<%= render partial: "form_labels" %>
+	</div>
 	<%= render partial: "new_item" %>
 	<div class="row">
-		<h2 class="col-md-6 col-xs-6">Update Scanner Items:</h2>
+		<h2 class="col-md-6 col-xs-12">Update Scanner Items:</h2>
 	</div>
 	<%= render partial: "form_labels" %>
 	<%= form_for @scanner do |f| %>
@@ -28,7 +33,7 @@
 			</div>
 		<% end %>
 		<div class="row">
-		<%= f.submit "Update Scanner", class: "col-md-10 col-xs-10 btn btn-default btn-info"%>
+		<%= f.submit "Update Scanner", class: "col-md-12 col-xs-12 btn btn-default btn-info"%>
 		</div>
 	<% end %>
 </div>

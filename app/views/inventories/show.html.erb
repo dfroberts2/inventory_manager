@@ -1,27 +1,38 @@
 <div class="inventory-container">
-	<div class="row">
-		<%= link_to "Previous Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, true)), class: "btn btn-info btn-default back-button col-md-2 col-xs-2"%>
-		<%= link_to "Next Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, false)), class: "btn btn-info btn-default back-button col-md-2 col-md-offset-8 col-xs-2 col-xs-offset-8"%>
+	<!--mobile view -->
+	<div class="row hidden-md hidden-lg">
+		<%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business), class: "btn btn-info spaced-button back-button col-xs-12"%>
+	</div>
+	<div class="row hidden-md hidden-lg">
+		<%= link_to "Previous Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, true)), class: "btn btn-info spaced-button col-xs-12"%>
+	</div>
+	<div class="row hidden-md hidden-lg">
+		<%= link_to "Next Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, false)), class: "btn btn-info spaced-button col-xs-12"%>
+	</div>
+	<!--large screen view -->
+	<div class="row hidden-xs">
+		<%= link_to "Previous Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, true)), class: "btn btn-info btn-default back-button col-md-2"%>
+		<%= link_to "Next Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, false)), class: "btn btn-info btn-default back-button col-md-2 col-md-offset-8"%>
 	</div>
 	<div class="row">
-		<h1 class="col-md-6 col-xs-6"><%= @inventory.business.name %></h1>
-		<h1><%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business), class: "btn btn-info btn-default back-button col-md-2 col-md-offset-4 col-xs-2 col-xs-offset-4"%></h1>
+		<h1 class="col-md-6 col-xs-12"><%= @inventory.business.name %></h1>
+		<h1><%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business), class: "btn btn-info btn-default back-button col-md-2 col-md-offset-4 hidden-xs"%></h1>
 	</div>
 	<h2><%= @inventory.date.to_date%> Inventory</h2>
-	<div class="category row">
+	<div class="category row hidden-xs">
 		<h3 class="report-type-header">Report by Category</h3>
-		<div class="cat-scan-border scanner col-md-8 col-xs-8">
+		<div class="cat-scan-border scanner col-md-8">
 			<h3 class="inventory-sub-header">Scanners</h3>
 			<ol>
 				<% @inventory.category_scanners.each do |scanner| %>
 				<div class="row">
-					<div class="col-md-4 col-xs-3">
+					<div class="col-md-4">
 						<li><%= link_to "Edit Scanner", edit_category_scanner_path(scanner)%></li>
 					</div>
-					<div class="col-md-2 col-xs-2">
+					<div class="col-md-2">
 						<p><%= link_to "Delete", category_scanner_path(scanner), method: :delete %></p>
 					</div>
-					<div class="col-md-6 col-xs-6">
+					<div class="col-md-6">
 						<%= form_tag import_category_scanners_path, multipart: true do %>
 							<%= file_field_tag :file%>
 							<%= hidden_field_tag :scanner_id, scanner.id %>
@@ -39,15 +50,48 @@
 		<div class="cat-rep-border reports col-md-4 col-xs-4">
 			<h3 class="inventory-sub-header">Generate Reports</h3>
 			
-				<div class="row"><%= link_to "View Transfer Report", cat_trans_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 report-button col-xs-8 col-xs-offset-2" %></div>
+				<div class="row"><%= link_to "View Transfer Report", cat_trans_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 spaced-button col-xs-8 col-xs-offset-2" %></div>
 				<% if @inventory.business.previous_inventory(@inventory) != nil %>
-					<div class="row"><%= link_to "View Department Report", dept_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 col-xs-88 col-xs-offset-2 report-button" %></div>
+					<div class="row"><%= link_to "View Department Report", dept_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 col-xs-88 col-xs-offset-2 spaced-button" %></div>
 				<% end %>
 			
 		</div>
 	</div>
-
-	<div class="category row">
+	<!--mobile view -->
+	<div class="row category hidden-lg hidden-md">
+		<h3 class="report-type-header">Report by Category</h3>
+	</div>
+	<div class="row hidden-lg hidden-md">
+		<div class="scanner col-xs-8">
+			<ol>
+				<% @inventory.category_scanners.each do |scanner| %>
+				<div class="row">
+					<div class="col-xs-6">
+						<li><%= link_to "Edit Scanner", edit_category_scanner_path(scanner)%></li>
+					</div>
+					<div class="col-xs-3 col-xs-offset-3">
+						<p><%= link_to "Delete", category_scanner_path(scanner), method: :delete %></p>
+					</div>
+				</div>
+				<% end %>
+			</ol>
+		</div>
+	</div>
+	<div class="row hidden-md hidden-lg">
+		<%= link_to "Add Scanner", inventory_category_scanners_path(@inventory), method: :post, class: "col-xs-5 btn btn-info"%>
+		<%= link_to "Edit Margins", edit_margins_path(@inventory), class: "col-xs-5 col-xs-offset-2 btn btn-info" %>
+	</div>
+	<div class="row hidden-md hidden-lg">
+		<%= link_to "View Transfer Report", cat_trans_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+	</div>
+	<% if @inventory.business.previous_inventory(@inventory) != nil %>
+		<div class="row hidden-md hidden-lg">
+			<%= link_to "View Dept Report", dept_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+		</div>
+	<% end %>
+	
+	<!--large screen view -->
+	<div class="category row hidden-xs">
 		<h3 class="report-type-header">Report by UPC Code</h3>
 		<div class="upc-scan-border scanner col-md-8 col-xs-8">
 			<h3 class="inventory-sub-header">Scanners</h3>
@@ -77,11 +121,43 @@
 		<div class="upc-rep-border reports col-md-4 col-xs-4">
 			<h3 class="inventory-sub-header">Generate Reports</h3>
 			
-				<div class="row"><%= link_to "View Transfer Report", upc_trans_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 col-xs-8 col-xs-offset-2 report-button" %></div>
+				<div class="row"><%= link_to "View Transfer Report", upc_trans_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 col-xs-8 col-xs-offset-2 spaced-button" %></div>
 				<% if @inventory.business.previous_inventory(@inventory) != nil %>
-					<div class="row"><%= link_to "View Department Report", dept_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 report-button" %></div>
+					<div class="row"><%= link_to "View Department Report", dept_report_path(@inventory), class: "btn btn-success col-md-offset-2 col-md-8 spaced-button" %></div>
 				<% end %>
 			
 		</div>
 	</div>
+
+	<!--mobile view -->
+	<div class="row category hidden-lg hidden-md">
+		<h3 class="report-type-header">Report by UPC</h3>
+	</div>
+	<div class="row hidden-lg hidden-md">
+		<div class="scanner col-xs-8">
+			<ol>
+				<% @inventory.upc_scanners.each do |scanner| %>
+				<div class="row">
+					<div class="col-xs-6">
+						<li><%= link_to "Edit Scanner", edit_upc_scanner_path(scanner)%></li>
+					</div>
+					<div class="col-xs-3 col-xs-offset-3">
+						<p><%= link_to "Delete", upc_scanner_path(scanner), method: :delete %></p>
+					</div>
+				</div>
+				<% end %>
+			</ol>
+		</div>
+	</div>
+	<div class="row hidden-md hidden-lg">
+		<%= link_to "Add Scanner", inventory_upc_scanners_path(@inventory), method: :post, class: "col-xs-5 btn btn-info"%>
+	</div>
+	<div class="row hidden-md hidden-lg">
+		<%= link_to "View Transfer Report", upc_trans_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+	</div>
+	<% if @inventory.business.previous_inventory(@inventory) != nil %>
+		<div class="row hidden-md hidden-lg">
+			<%= link_to "View Dept Report", dept_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+		</div>
+	<% end %>
 </div>
