@@ -1,40 +1,78 @@
 <div class="edit-scanner">
-	<div class="row">
-		<h2 class="col-md-6 col-xs-6">Add New Item:</h2>
-		<h2><%= link_to "Back", inventory_path(@scanner.inventory), class: "btn btn-info btn-default back-button col-md-3 col-md-offset-3 col-xs-3 col-xs-offset-3" %></h2>
+	<div class="row hidden-md hidden-lg">
+		<%= link_to "Back", inventory_path(@scanner.inventory), class: "btn btn-info btn-default back-button spaced-button col-xs-12" %>
 	</div>
-	<%= render partial: "new_form_labels" %>
+	<div class="row">
+		<h2 class="col-md-6 col-xs-12">Add New Item:</h2>
+		<h2><%= link_to "Back", inventory_path(@scanner.inventory), class: "btn btn-info btn-default back-button col-md-3 col-md-offset-3 hidden-xs" %></h2>
+	</div>
+	<div class="hidden-xs">
+		<%= render partial: "new_form_labels" %>
+	</div>
 	<%= render partial: "new_item" %>
 	<div class="row">
 		<h2 class="col-md-6">Update Scanner Items:</h2>
 	</div>
-	<%= render partial: "edit_form_labels" %>
-	<%= form_for @scanner do |f| %>
-		<%= f.fields_for :upc_items do |i_f| %>
-			<div class="row form-group">
-				<div class="col-md-2 col-xs-2">
-					<p><%=i_f.object.upc %></p>
+	<div class="hidden-xs">
+		<%= render partial: "edit_form_labels" %>
+	</div>
+
+		<%= form_for @scanner do |f| %>
+			<%= f.fields_for :upc_items do |i_f| %>
+				<!--desktop view-->
+				<div class="hidden-xs">
+					<div class="row form-group">
+						<div class="col-md-2">
+							<p><%=i_f.object.upc %></p>
+						</div>
+						<div class="col-md-2">
+							<p><%=i_f.object.brand_name %></p>
+						</div>
+						<div class="col-md-2">
+							<p><%=i_f.object.product_name %></p>
+						</div>
+						<div class="col-md-2">
+							<%= i_f.text_field :quantity, class: "form-control"%>
+						</div>
+						<div class="col-md-2">
+							<%= i_f.text_field :retail_price, class: "form-control"%>
+						</div>
+						<div class="col-md-2">
+							<%= i_f.check_box :_destroy%>
+							<%= f.label :_destroy, "Delete Item?" %>
+						</div>
+					</div>
 				</div>
-				<div class="col-md-2 col-xs-2">
-					<p><%=i_f.object.brand_name %></p>
+				<!--mobile view-->
+				<div class="hidden-lg hidden-md">
+					<div class="row form-group">
+						<div class="col-xs-4">
+							<p><%=i_f.object.upc %></p>
+						</div>
+						<div class="col-xs-4">
+							<p><%=i_f.object.brand_name %></p>
+						</div>
+						<div class="col-xs-4">
+							<p><%=i_f.object.product_name %></p>
+						</div>
+					</div>
+					<div class="row form-group update-item-bottom-row">
+						<div class="col-xs-4">
+							<%= i_f.text_field :quantity, class: "form-control"%>
+						</div>
+						<div class="col-xs-4">
+							<%= i_f.text_field :retail_price, class: "form-control"%>
+						</div>
+						<div class="col-xs-4">
+							<%= i_f.check_box :_destroy%>
+							<%= f.label :_destroy, "Delete Item?" %>
+						</div>
+					</div>
 				</div>
-				<div class="col-md-2 col-xs-2">
-					<p><%=i_f.object.product_name %></p>
-				</div>
-				<div class="col-md-2 col-xs-2">
-					<%= i_f.text_field :quantity, class: "form-control"%>
-				</div>
-				<div class="col-md-2 col-xs-2">
-					<%= i_f.text_field :retail_price, class: "form-control"%>
-				</div>
-				<div class="col-md-2 col-xs-2">
-					<%= i_f.check_box :_destroy%>
-					<%= f.label :_destroy, "Delete Item?" %>
-				</div>
+			<% end %>
+			<div class="row">
+			<%= f.submit "Update Scanner", class: "col-md-10 col-xs-12 btn btn-default btn-info"%>
 			</div>
 		<% end %>
-		<div class="row">
-		<%= f.submit "Update Scanner", class: "col-md-10 col-xs-10 btn btn-default btn-info"%>
-		</div>
-	<% end %>
+
 </div>

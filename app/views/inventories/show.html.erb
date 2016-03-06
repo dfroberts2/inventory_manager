@@ -9,7 +9,7 @@
 	<div class="row hidden-md hidden-lg">
 		<%= link_to "Next Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, false)), class: "btn btn-info spaced-button col-xs-12"%>
 	</div>
-	<!--large screen view -->
+	<!--desktop view -->
 	<div class="row hidden-xs">
 		<%= link_to "Previous Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, true)), class: "btn btn-info btn-default back-button col-md-2"%>
 		<%= link_to "Next Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, false)), class: "btn btn-info btn-default back-button col-md-2 col-md-offset-8"%>
@@ -90,7 +90,7 @@
 		</div>
 	<% end %>
 	
-	<!--large screen view -->
+	<!--desktop view -->
 	<div class="category row hidden-xs">
 		<h3 class="report-type-header">Report by UPC Code</h3>
 		<div class="upc-scan-border scanner col-md-8 col-xs-8">

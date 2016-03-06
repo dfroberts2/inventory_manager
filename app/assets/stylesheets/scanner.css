@@ -9,3 +9,7 @@
 		margin: auto;
 	}
 }
+
+.update-item-bottom-row {
+	border-bottom: solid 2px #d8d8d8;
+}
