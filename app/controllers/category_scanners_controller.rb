@@ -22,6 +22,7 @@ class  CategoryScannersController < ApplicationController
 	end
 
 	def update
+		binding.pry
 		scanner = CategoryScanner.find(params[:id])
 		params[:category_scanner][:category_items_attributes].each do |num, attributes|
 			update_item = CategoryItem.find(attributes[:id])

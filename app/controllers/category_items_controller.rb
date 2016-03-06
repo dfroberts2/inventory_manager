@@ -4,9 +4,14 @@ class  CategoryItemsController < ApplicationController
 		item = scanner.category_items.new(item_params)
 		item.category = Category.find_or_create_by(inventory: scanner.inventory, category_name: params[:category_item][:category])
 		if item.save
-			redirect_to edit_category_scanner_path(scanner), notice: "Item added successfully."
+			notice = "Item added successfully."
+			render json: {category: item.category_name, quantity: item.quantity, retail: item.retail_price, id: item.id}.to_json if request.xhr?
 		else
-			redirect_to edit_category_scanner_path(scanner), notice: "Couldn't add item."
+			notice = "Couldn't add item."
+			render json: {notice: notice}.to_json
+		end
+		if !request.xhr?
+			redirect_to edit_category_scanner_path(scanner), notice: notice
 		end
 	end
 

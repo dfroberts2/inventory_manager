@@ -1,9 +1,12 @@
 <div class="select-container">
 	<div class="row">
-		<h2 class="col-md-6 col-xs-6">Select Owner:</h2>
-		<h2 class="new-form-button btn btn-info col-md-3 col-md-offset-3 col-xs-3 col-xs-offset-3">New Owner</h2>
+		<h2 class="col-md-6 col-xs-12">Select Owner:</h2>
+		<h2 class="new-form-button btn btn-info col-md-3 col-md-offset-3 hidden-xs">New Owner</h2>
 	</div>
-	<div class="row new-form col-md-5 col-md-offset-7 col-xs-5 col-xs-offset-7">
+	<div class="row hidden-md hidden-lg">
+		<h2 class="new-form-button btn btn-info col-xs-12 hidden-lg hidden-md">New Owner</h2>
+	</div>
+	<div class="row new-form col-md-5 col-md-offset-7 col-xs-12">
 		<%= render partial: "new", locals: {owner: @owner} %>
 	</div>
 	<select class="owner-select form-control">
