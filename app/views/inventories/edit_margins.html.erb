@@ -1,7 +1,10 @@
 <div class="edit-margins">
 	<div class="row">
-		<h2 class="col-md-6 col-xs-6">Edit Margins</h2>
-		<h2 class="col-md-6 col-xs-6"><%= link_to "Back", inventory_path(@inventory), class: "btn btn-info btn-default back-button col-md-6 col-md-offset-6 col-xs-6 col-xs-offset-6" %></h2>
+		<%= link_to "Back", inventory_path(@inventory), class: "btn btn-info btn-default back-button col-xs-12 spaced-button"%>
+	</div>
+	<div class="row">
+		<h2 class="col-md-6 col-xs-12">Edit Margins</h2>
+		<h2 class="col-md-6 hidden-xs"><%= link_to "Back", inventory_path(@inventory), class: "btn btn-info btn-default back-button col-md-6 col-md-offset-6 col-xs-6 col-xs-offset-6" %></h2>
 	</div>
 	<div class="row">
 		<%= form_tag update_margins_previous_path(@inventory), method: :put do %>

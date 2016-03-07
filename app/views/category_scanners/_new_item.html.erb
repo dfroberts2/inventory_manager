@@ -1,3 +1,4 @@
+<!--desktop view-->
 <%= form_for [@scanner, @item], :html =>{class: 'hidden-xs'} do |f| %>
 	<div class="row form-group">
 		<div class="col-md-3 col-xs-3">
@@ -14,7 +15,7 @@
 		<%= f.submit "Add Item", class: "col-md-12 btn btn-default btn-info"%>
 	</div>
 <% end %>
-
+<!--mobile view-->
 <%= form_for [@scanner, @item], :html =>{class: 'hidden-lg hidden-md new-cat-item-mobile'} do |f| %>
 	<div class="row form-group">
 		<div class="col-md-3 col-xs-4">

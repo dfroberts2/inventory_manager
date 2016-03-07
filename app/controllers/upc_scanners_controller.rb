@@ -18,7 +18,15 @@ class  UpcScannersController < ApplicationController
 
 	def edit
 		@scanner = UpcScanner.find(params[:id])
+		@items = @scanner.upc_items.order('updated_at DESC')[0..19]
 		@item = UpcItem.new
+	end
+
+	def load_edit_items
+		scanner = UpcScanner.find(params[:id])
+		count = params[:itemCount].to_i
+		loaded_items = scanner.upc_items.order('updated_at DESC')[count..count + 49].map{|item| item.json_upc_item}
+		render json: {items: loaded_items}.to_json
 	end
 
 	def update

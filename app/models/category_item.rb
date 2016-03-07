@@ -6,4 +6,8 @@ class CategoryItem < ActiveRecord::Base
 	validates :quantity, presence: true
 	validates :retail_price, presence: true
 	validates :category_id, presence: true
+
+	def json_cat_item
+		{category: category_name, quantity: quantity, retail: retail_price, id: id}
+	end
 end

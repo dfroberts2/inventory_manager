@@ -23,6 +23,13 @@
 	margin: auto;
 }
 
+ @media (max-width: 768px) {
+	.edit-margins {
+		width: 100%;
+		margin: auto;
+	}
+}
+
 .category {
 	border: solid 2px #d8d8d8;
 }
