@@ -18,11 +18,18 @@ class  CategoryScannersController < ApplicationController
 
 	def edit
 		@scanner = CategoryScanner.find(params[:id])
+		@items = @scanner.category_items.order('updated_at DESC')[0..19]
 		@item = CategoryItem.new
 	end
 
+	def load_edit_items
+		scanner = CategoryScanner.find(params[:id])
+		count = params[:itemCount].to_i
+		loaded_items = scanner.category_items.order('updated_at DESC')[count..count + 49].map{|item| item.json_cat_item}
+		render json: {items: loaded_items}.to_json
+	end
+
 	def update
-		binding.pry
 		scanner = CategoryScanner.find(params[:id])
 		params[:category_scanner][:category_items_attributes].each do |num, attributes|
 			update_item = CategoryItem.find(attributes[:id])

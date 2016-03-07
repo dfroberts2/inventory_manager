@@ -79,12 +79,14 @@ Rails.application.routes.draw do
     collection {post :import}
     post 'category_items' => 'category_items#create'
   end
+  get 'category_scanners/:id/load_edit_items' => 'category_scanners#load_edit_items', as: :load_cat_edit_items
 
   resources :upc_scanners, only: [:edit, :update, :destroy] do
     collection {post :import}
     post 'upc_items' => 'upc_items#create'
   end
-
+  get 'upc_scanners/:id/load_edit_items' => 'upc_scanners#load_edit_items', as: :load_upc_edit_items
+  
   get 'owners/:id/businesses/:id/inventories/:year' => 'inventories#index_by_year'
   post 'businesses/:id/inventories' => 'inventories#create', as: :business_inventories
 end

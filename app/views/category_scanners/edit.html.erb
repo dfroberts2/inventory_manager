@@ -14,9 +14,9 @@
 		<h2 class="col-md-6 col-xs-12">Update Scanner Items:</h2>
 	</div>
 	<%= render partial: "form_labels" %>
-	<%= form_for @scanner do |f| %>
-		<%= f.fields_for :category_items do |i_f| %>
-			<div class="row form-group">
+	<%= form_for @scanner, :html => {id: "edit-scanner-form"} do |f| %>
+		<%= f.fields_for :category_items, @items do |i_f| %>
+			<div class="row form-group edit-group">
 				<div class="col-md-3 col-xs-3">
 					<%= i_f.text_field :category_name, class: "form-control"%>
 				</div>
@@ -32,8 +32,11 @@
 				</div>
 			</div>
 		<% end %>
+		<div class="row load-row">
+			<button class="load-more-cat spaced-button btn btn-primary col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">Load More</button>
+		</div>
 		<div class="row">
-		<%= f.submit "Update Scanner", class: "col-md-12 col-xs-12 btn btn-default btn-info"%>
+			<%= f.submit "Update Scanner", class: "col-md-12 col-xs-12 btn btn-default btn-info"%>
 		</div>
 	<% end %>
 </div>

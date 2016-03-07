@@ -1,7 +1,7 @@
 <div class="inventory-container">
 	<!--mobile view -->
 	<div class="row hidden-md hidden-lg">
-		<%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business), class: "btn btn-info spaced-button back-button col-xs-12"%>
+		<%= link_to "Back", owner_business_path(@inventory.business.owner, @inventory.business), class: "btn btn-info back-button col-xs-12"%>
 	</div>
 	<div class="row hidden-md hidden-lg">
 		<%= link_to "Previous Inventory", inventory_path(@inventory.business.previous_next_repeat(@inventory, true)), class: "btn btn-info spaced-button col-xs-12"%>
