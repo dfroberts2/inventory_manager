@@ -3,7 +3,7 @@
 		<h2>Select Business:</h2>
 		<ul>
 			<% @businesses.each do |business| %>
-				<li><%= link_to business.name, owner_business_path(business.owner, business)%></li>
+				<li class="select-item"><%= link_to business.name, owner_business_path(business.owner, business)%></li>
 			<% end %>
 		</ul>
 	</div>
