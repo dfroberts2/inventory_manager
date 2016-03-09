@@ -34,7 +34,11 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'launchy'
   gem 'pry'
+  gem 'database_cleaner'
 end
 
 group :development do
