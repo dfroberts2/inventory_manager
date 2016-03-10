@@ -1,17 +1,19 @@
 $(document).ready(function(){
 	$(".owner-select").change(function(event){
 		var ownerId = $(".owner-select option:selected").val()
-		var url = "owners/" + ownerId + "/businesses"
-		$.get(url, function(response){
-		}).then(function(response){
-			$(".business-links").html(response)
-			$('.new-business-button').click(function(event) {
-				event.preventDefault();
-				$('.new-business-form').toggle();
-			});
-		}).fail(function(response){
-			console.log("fail" + response)
-		})
+		if (ownerId != "select") {
+			var url = "owners/" + ownerId + "/businesses"
+			$.get(url, function(response){
+			}).then(function(response){
+				$(".business-links").html(response)
+				$('.new-business-button').click(function(event) {
+					event.preventDefault();
+					$('.new-business-form').toggle();
+				});
+			}).fail(function(response){
+				console.log("fail" + response)
+			})
+		}
 	});
 
 	$(".year-select").change(function(event){

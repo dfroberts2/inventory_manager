@@ -9,10 +9,11 @@
 	<div class="row new-form col-md-5 col-md-offset-7 col-xs-12">
 		<%= render partial: "new", locals: {owner: @owner} %>
 	</div>
-	<select class="owner-select form-control">
+	<select name="owner" class="owner-select form-control">
+			<option value="select">Select Owner</option>
 		<% @owners.each do |owner| %>
 			<option value="<%=owner.id%>"><%=owner.name%></option>
-			<%end%>
+		<%end%>
 		</select>
 	<div class="business-links">
 	</div>

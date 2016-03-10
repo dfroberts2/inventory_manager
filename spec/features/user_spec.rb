@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'rails_helper'
 include SpecTestHelper
+include WaitForAjax
 
 feature "User browsing the application" do
 	context "Visit pages not logged in" do
@@ -16,20 +17,21 @@ feature "User browsing the application" do
 			u = FactoryGirl.create(:user)
 			log_user_in(u)
 			visit '/'
-			expect(page).to have_selector("select.owner-select")
+			expect(page).to have_current_path(root_path)
 		end
 
-		it "Can navigate to business inventory index page", js:true do
+		it "Can navigate to business show page", js:true do
 			u = FactoryGirl.create(:user)
 			b = FactoryGirl.create(:business)
 			log_user_in(u)
-			find(:select, from, options).find(:option, value, options).select_option
-			visit '/owners/'+b.owner.id.to_s+'/businesses/'+b.id.to_s
-			expect(page).to have_selector("select.year-select")
+			select(b.owner.name, :from => 'owner')
+			wait_for_ajax
+			click_link(b.name)
+			expect(page).to have_current_path(owner_business_path(b, b.owner))
 		end
 
 		# it "Can navigate to inventory show page" do
 			# u = FactoryGirl.create(:user)
-		end
+		# end
 	end
 end
