@@ -7,8 +7,7 @@ feature "User browsing the application" do
 	context "Visit pages not logged in" do
 		it "Sees the login page when visiting root path" do
 			visit '/'
-			expect(page).to have_field('username')
-			expect(page).to have_field('password')
+			expect(page).to have_current_path(login_path)
 		end
 	end
 
@@ -30,8 +29,17 @@ feature "User browsing the application" do
 			expect(page).to have_current_path(owner_business_path(b, b.owner))
 		end
 
-		# it "Can navigate to inventory show page" do
-			# u = FactoryGirl.create(:user)
-		# end
+		it "Can navigate to inventory show page", js:true do
+			u = FactoryGirl.create(:user)
+			i = FactoryGirl.create(:inventory)
+			log_user_in(u)
+			select(i.business.owner.name, :from => 'owner')
+			wait_for_ajax
+			click_link(i.business.name)
+			select(i.date.year, :from => 'inventory-year')
+			wait_for_ajax
+			click_link(i.format_date)
+			expect(page).to have_current_path(inventory_path(i))
+		end
 	end
 end

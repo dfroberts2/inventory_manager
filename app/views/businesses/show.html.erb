@@ -14,7 +14,7 @@
 			<%= render partial: "/inventories/new", locals: {business: @business, inventory: @inventory} %>
 		</div>
 	</div>
-	<select class="year-select form-control">
+	<select name="inventory-year"class="year-select form-control">
 			<option>Select year</option>
 			<% @business.inventory_years.each do |year| %>
 				<option value="<%=year%>"><%=year%></option>
