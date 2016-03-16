@@ -4,7 +4,7 @@ include SpecTestHelper
 include WaitForAjax
 include ResponsiveHelpers
 
-feature "Owner" do
+feature "Owner/Business navigation" do
 	context	"Creates owner" do
 		before(:each) do
 			u = FactoryGirl.create(:user)

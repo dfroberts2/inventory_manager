@@ -58,40 +58,42 @@
 		</div>
 	</div>
 	<!--mobile view -->
-	<div class="row category hidden-lg hidden-md">
-		<h3 class="report-type-header">Report by Category</h3>
-	</div>
-	<div class="row hidden-lg hidden-md">
-		<div class="scanner col-xs-8">
-			<ol>
-				<% @inventory.category_scanners.each do |scanner| %>
-				<div class="row">
-					<div class="col-xs-6">
-						<li><%= link_to "Edit Scanner", edit_category_scanner_path(scanner)%></li>
-					</div>
-					<div class="col-xs-3 col-xs-offset-3">
-						<p><%= link_to "Delete", category_scanner_path(scanner), method: :delete %></p>
-					</div>
-				</div>
-				<% end %>
-			</ol>
+	<div class="category hidden-lg hidden-md">
+		<div class="row">
+			<h3 class="report-type-header">Report by Category</h3>
 		</div>
-	</div>
-	<div class="row hidden-md hidden-lg">
-		<%= link_to "Add Scanner", inventory_category_scanners_path(@inventory), method: :post, class: "col-xs-5 btn btn-info"%>
-		<%= link_to "Edit Margins", edit_margins_path(@inventory), class: "col-xs-5 col-xs-offset-2 btn btn-info" %>
-	</div>
-	<div class="row hidden-md hidden-lg">
-		<%= link_to "View Transfer Report", cat_trans_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
-	</div>
-	<% if @inventory.business.previous_inventory(@inventory) != nil %>
-		<div class="row hidden-md hidden-lg">
-			<%= link_to "View Dept Report", dept_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+		<div class="row">
+			<div class="scanner col-xs-8">
+				<ol>
+					<% @inventory.category_scanners.each do |scanner| %>
+					<div class="row">
+						<div class="col-xs-6">
+							<li><%= link_to "Edit Scanner", edit_category_scanner_path(scanner)%></li>
+						</div>
+						<div class="col-xs-3 col-xs-offset-3">
+							<p><%= link_to "Delete", category_scanner_path(scanner), method: :delete %></p>
+						</div>
+					</div>
+					<% end %>
+				</ol>
+			</div>
 		</div>
-	<% end %>
+		<div class="row">
+			<%= link_to "Add Scanner", inventory_category_scanners_path(@inventory), method: :post, class: "col-xs-5 btn btn-info"%>
+			<%= link_to "Edit Margins", edit_margins_path(@inventory), class: "col-xs-5 col-xs-offset-2 btn btn-info" %>
+		</div>
+		<div class="row">
+			<%= link_to "View Transfer Report", cat_trans_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+		</div>
+		<% if @inventory.business.previous_inventory(@inventory) != nil %>
+			<div class="row">
+				<%= link_to "View Dept Report", dept_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+			</div>
+		<% end %>
+	</div>
 	
 	<!--desktop view -->
-	<div class="category row hidden-xs">
+	<div class="upc row hidden-xs">
 		<h3 class="report-type-header">Report by UPC Code</h3>
 		<div class="upc-scan-border scanner col-md-8 col-xs-8">
 			<h3 class="inventory-sub-header">Scanners</h3>
@@ -130,34 +132,36 @@
 	</div>
 
 	<!--mobile view -->
-	<div class="row category hidden-lg hidden-md">
-		<h3 class="report-type-header">Report by UPC</h3>
-	</div>
-	<div class="row hidden-lg hidden-md">
-		<div class="scanner col-xs-8">
-			<ol>
-				<% @inventory.upc_scanners.each do |scanner| %>
-				<div class="row">
-					<div class="col-xs-6">
-						<li><%= link_to "Edit Scanner", edit_upc_scanner_path(scanner)%></li>
-					</div>
-					<div class="col-xs-3 col-xs-offset-3">
-						<p><%= link_to "Delete", upc_scanner_path(scanner), method: :delete %></p>
-					</div>
-				</div>
-				<% end %>
-			</ol>
+	<div class="upc hidden-lg hidden-md">
+		<div class="row">
+			<h3 class="report-type-header">Report by UPC</h3>
 		</div>
-	</div>
-	<div class="row hidden-md hidden-lg">
-		<%= link_to "Add Scanner", inventory_upc_scanners_path(@inventory), method: :post, class: "col-xs-5 btn btn-info"%>
-	</div>
-	<div class="row hidden-md hidden-lg">
-		<%= link_to "View Transfer Report", upc_trans_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
-	</div>
-	<% if @inventory.business.previous_inventory(@inventory) != nil %>
-		<div class="row hidden-md hidden-lg">
-			<%= link_to "View Dept Report", dept_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+		<div class="row">
+			<div class="scanner col-xs-8">
+				<ol>
+					<% @inventory.upc_scanners.each do |scanner| %>
+					<div class="row">
+						<div class="col-xs-6">
+							<li><%= link_to "Edit Scanner", edit_upc_scanner_path(scanner)%></li>
+						</div>
+						<div class="col-xs-3 col-xs-offset-3">
+							<p><%= link_to "Delete", upc_scanner_path(scanner), method: :delete %></p>
+						</div>
+					</div>
+					<% end %>
+				</ol>
+			</div>
 		</div>
-	<% end %>
+		<div class="row">
+			<%= link_to "Add Scanner", inventory_upc_scanners_path(@inventory), method: :post, class: "col-xs-5 btn btn-info"%>
+		</div>
+		<div class="row">
+			<%= link_to "View Transfer Report", upc_trans_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+		</div>
+		<% if @inventory.business.previous_inventory(@inventory) != nil %>
+			<div class="row">
+				<%= link_to "View Dept Report", dept_report_path(@inventory), class: "btn btn-success spaced-button col-xs-12" %>
+			</div>
+		<% end %>
+	</div>
 </div>
