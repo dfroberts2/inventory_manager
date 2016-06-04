@@ -43,8 +43,11 @@
 				<% end %>
 			</ol>
 			<div class="row">
-				<%= link_to "Add Scanner", inventory_category_scanners_path(@inventory), method: :post, class: "col-md-6 col-xs-6"%>
-				<%= link_to "Edit Category Margins", edit_margins_path(@inventory), class: "col-md-6 col-xs-6" %>
+				<ul style="list-style-type: none;">
+					<li><%= link_to "Add Scanner", inventory_category_scanners_path(@inventory), method: :post, class: "col-md-6 col-xs-6"%>
+					<li><%= link_to "Edit Category Margins", edit_margins_path(@inventory), class: "col-md-6 col-xs-6" %>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div class="cat-rep-border reports col-md-4 col-xs-4">
@@ -117,7 +120,9 @@
 				<% end %>
 			</ol>
 			<div class="row">
-				<%= link_to "Add Scanner", inventory_upc_scanners_path(@inventory), method: :post, class: "col-md-6 col-xs-6"%>
+				<ul style="list-style-type: none;">
+					<li><%= link_to "Add Scanner", inventory_upc_scanners_path(@inventory), method: :post, class: "col-md-6 col-xs-6"%></li>
+				</ul>
 			</div>
 		</div>
 		<div class="upc-rep-border reports col-md-4 col-xs-4">

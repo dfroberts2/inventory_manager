@@ -4,7 +4,7 @@ include SpecTestHelper
 include WaitForAjax
 include ResponsiveHelpers
 
-feature "Inventory Navigation" do
+feature "Inventory" do
 	context	"Creates new inventory" do
 		before(:each) do
 			u = FactoryGirl.create(:user)
@@ -81,6 +81,10 @@ feature "Inventory Navigation" do
 				expect(page).to_not have_content('Edit Scanner')
 			end
 		end
-
+		context "Previous and next inventory buttons" do
+			it "Previous inventory button goes back one inventory"
+			b = FactoryGirl.create(:business)
+			b.inventories.create()
+		end
 	end
 end
